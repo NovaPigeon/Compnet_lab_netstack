@@ -91,8 +91,8 @@ int main(int argc,char **argv)
     dev = m.getDevice(id);
     for(int i=0;i<send_num;++i)
     {
-        int ret=MySendFrame(dev,i,&dst_mac,SEND_WAIT_TIME,MY_ETH_TYPE);
         cnt++;
+        int ret=MySendFrame(dev,i,&dst_mac,SEND_WAIT_TIME,MY_ETH_TYPE);
     }
 
     return 0;

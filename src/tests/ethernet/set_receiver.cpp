@@ -24,6 +24,9 @@ int recvFrameCallback_new(const void *frame, int len, dev_id id)
     memset(payload,0,payload_len+1);
     memcpy(payload, frame_ + ETHER_HDR_LEN, payload_len);
     const char *name = m.getDevice(id)->getDeviceName();
+    mt_cnt.lock();
+    cnt++;
+    mt_cnt.unlock();
     printf("[INFO] Device %s receive frame %d.\n"
            "src_mac: %02x:%02x:%02x:%02x:%02x:%02x\n"
            "dst_mac: %02x:%02x:%02x:%02x:%02x:%02x\n"
@@ -36,12 +39,10 @@ int recvFrameCallback_new(const void *frame, int len, dev_id id)
            payload,
            payload_len,
            ethtype);
+
     free(payload);
     fflush(stdout);
     
-    mt_cnt.lock();
-    cnt++;
-    mt_cnt.unlock();
     return 0;
 }
 int main(int argc, char **argv)
@@ -64,14 +65,14 @@ int main(int argc, char **argv)
     dev->setFrameReceiveCallback(recvFrameCallback_new);
     while(true)
     {
-        mt_cnt.lock_shared();
+        mt_cnt.lock();
         if(cnt==recv_num)
         {
-            mt_cnt.unlock_shared();
+            //mt_cnt.unlock_shared();
             dev->stopRecv();
             break;
         }
-        mt_cnt.unlock_shared();
+        mt_cnt.unlock();
     }
     printf("[INFO] Device %s has received %d frames, expect %d frames.\n",dev_name,cnt,recv_num);
     printf("[INFO] Device %s stop receiving frames.\n",dev_name);

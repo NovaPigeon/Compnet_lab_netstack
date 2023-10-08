@@ -1,3 +1,0 @@
-[ERROR][Device::findDevice()] Device veth3-0 not found.
-[INFO][Device()::addDevice()] Add device veth3-0, whose mac address is c2:af:8e:a8:bb:e2.
-[INFO][Device::stopRecv()] Device veth3-0 stop receive.

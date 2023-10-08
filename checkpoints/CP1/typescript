@@ -1,4 +1,4 @@
-Script started on 2023-10-08 17:23:02+08:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="117" LINES="18"]
+Script started on 2023-10-08 19:58:09+08:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="99" LINES="18"]
 [ 33%] Built target lab-netstack
 [ 55%] Built target test_device_manager
 [ 77%] Built target set_receiver
@@ -9,34 +9,34 @@ Script started on 2023-10-08 17:23:02+08:00 [TERM="xterm-256color" TTY="/dev/pts
 + sudo ./execNS ns3 ifconfig
 veth3-0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.100.4.2  netmask 255.255.255.0  broadcast 0.0.0.0
-        inet6 fe80::a435:13ff:fea9:6ad7  prefixlen 64  scopeid 0x20<link>
-        ether a6:35:13:a9:6a:d7  txqueuelen 1000  (Ethernet)
-        RX packets 2  bytes 180 (180.0 B)
+        inet6 fe80::7c3b:a2ff:fee6:bd49  prefixlen 64  scopeid 0x20<link>
+        ether 7e:3b:a2:e6:bd:49  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 90 (90.0 B)
         RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 2  bytes 176 (176.0 B)
+        TX packets 1  bytes 90 (90.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
 veth3-2: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.100.2.2  netmask 255.255.255.0  broadcast 0.0.0.0
-        inet6 fe80::7437:e1ff:fede:e1a7  prefixlen 64  scopeid 0x20<link>
-        ether 76:37:e1:de:e1:a7  txqueuelen 1000  (Ethernet)
+        inet6 fe80::f85e:89ff:febd:2c83  prefixlen 64  scopeid 0x20<link>
+        ether fa:5e:89:bd:2c:83  txqueuelen 1000  (Ethernet)
         RX packets 1  bytes 90 (90.0 B)
         RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 2  bytes 176 (176.0 B)
+        TX packets 2  bytes 180 (180.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
 veth3-4: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.100.3.1  netmask 255.255.255.0  broadcast 0.0.0.0
-        inet6 fe80::bc21:64ff:fed2:6b83  prefixlen 64  scopeid 0x20<link>
-        ether be:21:64:d2:6b:83  txqueuelen 1000  (Ethernet)
-        RX packets 2  bytes 176 (176.0 B)
+        inet6 fe80::fc01:4cff:fed2:db89  prefixlen 64  scopeid 0x20<link>
+        ether fe:01:4c:d2:db:89  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 90 (90.0 B)
         RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 2  bytes 176 (176.0 B)
+        TX packets 1  bytes 90 (90.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
-+ sudo ./execNS ns3 ../../build/tests/ethernet/test_device_manager ../../checkpoints/CP1/cp1.txt
 + cd ../examples/
 + sudo ./removeVNet
++ sudo ./execNS ns3 ../../build/tests/ethernet/test_device_manager ../../checkpoints/CP1/cp1.txt
 + set +x
 
-Script done on 2023-10-08 17:23:03+08:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2023-10-08 19:58:09+08:00 [COMMAND_EXIT_CODE="0"]

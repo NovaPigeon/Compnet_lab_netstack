@@ -1,2 +1,0 @@
-[ERROR][Device::findDevice()] Device veth4-3 not found.
-[INFO][Device()::addDevice()] Add device veth4-3, whose mac address is d6:b3:0e:16:68:01.

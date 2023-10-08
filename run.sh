@@ -28,7 +28,7 @@ case "$choice" in
     ;;
     "CLEAN")
     rm -rf ./build
-    rm -rf ./checkpoints/CP1/log ./checkpoints/CP1/log
+    rm -rf ./checkpoints/CP1/log ./checkpoints/CP2/log ./checkpoints/CP1/typescript ./checkpoints/CP2/typescript
     rm -rf "$handinpack".tar
     rm -rf ./"$handinpack"
     ;;
