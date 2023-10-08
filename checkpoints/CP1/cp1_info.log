@@ -1,0 +1,13 @@
+[ERROR][test_device_manager]: Unknown command: inValidCommand
+[ERROR][Device::findDevice()] Device veth3-0 not found.
+[INFO][Device()::addDevice()] Add device veth3-0, whose mac address is 5e:59:6e:62:9a:c5.
+[ERROR][Device::findDevice()] Device veth3-2 not found.
+[ERROR][Device::findDevice()] Device veth3-2 not found.
+[INFO][Device()::addDevice()] Add device veth3-2, whose mac address is 02:ea:d0:c4:7d:87.
+[INFO][Device::findDevice()] Device veth3-2 found with id 1.
+[ERROR][Device::findDevice()] Device veth-err not found.
+[ERROR][Device::findDevice()] Device veth-err not found.
+[ERROR][Device::addDevice()] veth-err is not a valid device.
+[ERROR][test_device_manager]: addDevice faied
+[ERROR][Device::findDevice()] Device veth3-4 not found.
+[INFO][Device()::addDevice()] Add device veth3-4, whose mac address is e6:b9:d4:f8:57:f5.

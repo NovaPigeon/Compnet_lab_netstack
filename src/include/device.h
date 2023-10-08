@@ -11,6 +11,7 @@
 #include <thread>
 #include <vector>
 #include <shared_mutex>
+#include <string.h>
 #include "../include/type.h"
 class Device;
 class DeviceManager;
@@ -33,6 +34,7 @@ public:
     int stopRecv();
     const char *getDeviceName() const;
     const int getDeviceID() const;
+    const u_char *getDeviceMac() const;
 
 private:
     char *dev_name_;
@@ -61,6 +63,7 @@ public:
     Device *findDevice(const char * dev_name);
     Device *getDevice(dev_id id);
     void printAllValidDevice() const;
+    void printAllAddedDevice() const;
 private:
     std::vector<Device *> devices_list_;
     std::shared_timed_mutex manager_mutex;

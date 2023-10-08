@@ -1,0 +1,6 @@
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests/ethernet)
+link_libraries(lab-netstack pcap)
+add_executable(test_ethernet test_ethernet.cpp)
+add_executable(test_device_manager test_device_manager.cpp)
+add_executable(set_receiver set_receiver.cpp)
+add_executable(set_sender set_sender.cpp)

@@ -1,3 +1,0 @@
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/test)
-link_libraries(lab-netstack pcap)
-add_executable(test_device_manager test_device_manager.cpp)

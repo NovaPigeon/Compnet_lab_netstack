@@ -1,0 +1,13 @@
+inValidCommand
+findAllValidDevice
+findAllAddedDevice
+addDevice veth3-0
+findDevice veth3-2
+addDevice veth3-2
+findAllAddedDevice
+findDevice veth3-2
+findDevice veth-err
+addDevice veth-err
+addDevice veth3-4
+findAllAddedDevice
+exit

@@ -7,6 +7,7 @@
 #include "../include/device.h"
 #include "../include/type.h"
 #include <cstring>
+#include <string.h>
 #include <cstdio>
 #include <pcap/pcap.h>
 #include <linux/if_packet.h>
@@ -20,13 +21,13 @@
 #define DEBUG_ETHERNET
 
 #ifdef DEBUG_ETHERNET
-#define dbg_printf(...) printf(__VA_ARGS__)
+#define dbg_printf(...) fprintf(stderr,__VA_ARGS__)
 #else
 #define dbg_printf(...)
 #endif
 
 #define DEVICE_TIME_OUT 1000
-#define MAX_SNAPLEN 1<<16
+#define MAX_SNAPLEN (1<<16)
 
 Device::Device(char *dev_name,
        u_char *mac,
@@ -69,11 +70,12 @@ Device::~Device()
         this->receive_frame_thread_->join();
     memset(this->ebuf_,0,PCAP_ERRBUF_SIZE);
     free(this->dev_name_);
+    if(this->receive_frame_thread_!=nullptr)
+        free(this->receive_frame_thread_);
 }
 
 /**
  * @brief Encapsulate some data into an Ethernet II frame and send it.
- *
  * @param buf Pointer to the payload.
  * @param len Length of the payload.
  * @param ethtype EtherType field value of this frame.
@@ -189,14 +191,18 @@ const int Device::getDeviceID() const
     return (const int)this->id_;
 }
 
+const u_char *Device::getDeviceMac() const
+{
+    return (const u_char *)this->mac_;
+}
+
 int Device::stopRecv()
 {
     if(this->handle_)
     {
+        dbg_printf("[INFO][Device::stopRecv()] Device %s stop receive.\n",this->dev_name_);
         pcap_breakloop(this->handle_);
         this->setFrameReceiveCallback(nullptr);
-        if(this->receive_frame_thread_->joinable())
-            this->receive_frame_thread_->join();
         return 0;
     }
     return -1;
@@ -297,8 +303,8 @@ FOUND:
         return -1;
     }
     close(sockfd);
-
-    u_char *mac = reinterpret_cast<u_char *>(ifr.ifr_hwaddr.sa_data);
+    u_char *mac=(u_char *)malloc(ETHER_ADDR_LEN);
+    memcpy(mac,(u_char *)ifr.ifr_hwaddr.sa_data,ETHER_ADDR_LEN);
 
     /* Open a new device */
     this->manager_mutex.lock();
@@ -308,7 +314,7 @@ FOUND:
     memcpy(dev_name_cpy,dev_name,strlen(dev_name)+1);
     Device *device=new Device(dev_name_cpy,mac,id,this);
     this->devices_list_.push_back(device);
-    dbg_printf("[INFO][Device()::addDevice] "
+    dbg_printf("[INFO][Device()::addDevice()] "
                "Add device %s, "
                "whose mac address is %02x:%02x:%02x:%02x:%02x:%02x.\n",
                dev_name,
@@ -318,6 +324,7 @@ FOUND:
                mac[3],
                mac[4],
                mac[5]);
+    free(mac);
     this->manager_mutex.unlock();
     return id;
 }
@@ -339,7 +346,7 @@ Device *DeviceManager::findDevice(const char *dev_name)
         {
             int id=devices_list_[i]->getDeviceID();
             dbg_printf("[INFO][Device::findDevice()] "
-                       "Device %s found with id %d.", 
+                       "Device %s found with id %d.\n", 
             dev_name, 
             id);
             this->manager_mutex.unlock_shared();
@@ -391,10 +398,10 @@ void DeviceManager::printAllValidDevice() const
     pcap_if_t *devs;
     char ebuf[PCAP_ERRBUF_SIZE];
     int ret=pcap_findalldevs(&devs,ebuf);
-    printf("All devices below: \n");
+    printf("All valid devices below: \n");
     for(auto *p=devs;p;p=p->next)
     {
-        dbg_printf("device %s: %s\n", p->name, p->description);
+        printf("device %s: %s\n", p->name, p->description);
         for (auto *a = p->addresses; a; a = a->next)
         {
             if (a->addr->sa_family == AF_PACKET)
@@ -410,6 +417,24 @@ void DeviceManager::printAllValidDevice() const
         }
     }
     pcap_freealldevs(devs);
+}
+
+void DeviceManager::printAllAddedDevice() const
+{
+    int n_devices=this->devices_list_.size();
+    if(n_devices!=0)
+        printf("All added devices below: \n");
+    else
+        printf("No device added.\n");
+    for(int i=0;i<n_devices;++i)
+    {
+        Device *dev=this->devices_list_[i];
+        dev_id id=dev->getDeviceID();
+        const char *name=dev->getDeviceName();
+        const u_char *mac=dev->getDeviceMac();
+        printf("Device %d, name %s, mac %02x:%02x:%02x:%02x:%02x:%02x.\n",
+        id,name,mac[0],mac[1],mac[2],mac[3],mac[4],mac[5]);
+    }
 }
 
 void deviceRecvPcapHandler(u_char *args, const pcap_pkthdr *head, const u_char *packet)
