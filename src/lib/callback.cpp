@@ -21,6 +21,7 @@ int ether_recv_callback::recvFrameCallback(const void *frame, int len, dev_id id
     uint16_t ethtype = ntohs(*(uint16_t *)(frame_ + ETHER_ADDR_LEN * 2));
     size_t payload_len = len - ETHER_CRC_LEN - ETHER_HDR_LEN;
     u_char *payload = (u_char *)malloc(payload_len);
+    memset(payload,0,payload_len);
     memcpy(payload, frame_ + ETHER_HDR_LEN, payload_len);
     printf("[INFO] Device %d receive frame.\n"
            "src_mac: %02x:%02x:%02x:%02x:%02x:%02x\n"

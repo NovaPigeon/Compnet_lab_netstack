@@ -1,48 +1,62 @@
-Script started on 2023-10-07 22:41:38+08:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="99" LINES="18"]
+Script started on 2023-10-08 17:23:06+08:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="117" LINES="18"]
 ++ pwd
 + C=/root/compnet/lab/checkpoints/CP2
++ N=100
++ rm -r log
++ mkdir log
++ mkdir log/veth0_3 log/veth3_0 log/veth1_2 log/veth2_1 log/veth2_3 log/veth3_2 log/veth3_4 log/veth4_3
 + cd ../../build
 + make
-[  9%] [32mBuilding CXX object src/lib/CMakeFiles/lab-netstack.dir/device.cpp.o[0m
-[ 18%] [32m[1mLinking CXX static library liblab-netstack.a[0m
-[ 27%] Built target lab-netstack
-[ 36%] [32m[1mLinking CXX executable ../../../tests/ethernet/test_ethernet[0m
-[ 45%] Built target test_ethernet
-[ 54%] [32m[1mLinking CXX executable ../../../tests/ethernet/test_device_manager[0m
-[ 63%] Built target test_device_manager
-[ 72%] [32m[1mLinking CXX executable ../../../tests/ethernet/set_receiver[0m
-[ 81%] Built target set_receiver
-[ 90%] [32m[1mLinking CXX executable ../../../tests/ethernet/set_sender[0m
+[ 33%] Built target lab-netstack
+[ 55%] Built target test_device_manager
+[ 77%] Built target set_receiver
 [100%] Built target set_sender
 + cd ../vnetUtils/examples/
 + sudo ./makeVNet
 + cd ../helper/
-++ sudo ./execNS ns0 ifconfig
-++ /root/compnet/lab/checkpoints/CP2/getEther.py veth0-3
-+ veth0_3=62:0d:1d:3f:cb:1b
-++ sudo ./execNS ns1 ifconfig
-++ /root/compnet/lab/checkpoints/CP2/getEther.py veth1-2
-+ veth1_2=3e:f7:d9:a6:0d:ca
-++ sudo ./execNS ns2 ifconfig
-++ /root/compnet/lab/checkpoints/CP2/getEther.py veth2-1
-+ veth2_1=72:c3:cc:32:85:d3
-++ sudo ./execNS ns2 ifconfig
-++ /root/compnet/lab/checkpoints/CP2/getEther.py veth2-3
-+ veth2_3=6e:03:a2:53:ca:71
-++ sudo ./execNS ns3 ifconfig
-++ /root/compnet/lab/checkpoints/CP2/getEther.py veth3-0
-+ veth3_0=66:da:86:2b:c0:67
-++ sudo ./execNS ns3 ifconfig
-++ /root/compnet/lab/checkpoints/CP2/getEther.py veth3-2
-+ veth3_2=da:a4:48:1c:24:a9
-++ sudo ./execNS ns3 ifconfig
-++ /root/compnet/lab/checkpoints/CP2/getEther.py veth3-4
-+ veth3_4=72:66:31:78:e5:84
-++ sudo ./execNS ns4 ifconfig
-++ /root/compnet/lab/checkpoints/CP2/getEther.py veth4-3
-+ veth4_3=42:69:ab:65:52:d9
-+ sudo ./execNS ns2 ../../build/tests/ethernet/set_receiver veth2-1 10
+++ get_ether_address veth0-3 ns0
+++ set +x
++ veth0_3=be:4b:b0:45:f3:94
+++ get_ether_address veth1-2 ns1
+++ set +x
++ veth1_2=32:03:88:c8:a4:75
+++ get_ether_address veth2-1 ns2
+++ set +x
++ veth2_1=0e:81:0f:32:f4:26
+++ get_ether_address veth2-3 ns2
+++ set +x
++ veth2_3=36:08:fd:4c:5b:b4
+++ get_ether_address veth3-0 ns3
+++ set +x
++ veth3_0=c2:af:8e:a8:bb:e2
+++ get_ether_address veth3-2 ns3
+++ set +x
++ veth3_2=d6:7c:c4:3b:05:ea
+++ get_ether_address veth3-4 ns3
+++ set +x
++ veth3_4=5e:b3:f8:2c:22:86
+++ get_ether_address veth4-3 ns4
+++ set +x
++ veth4_3=d6:b3:0e:16:68:01
++ sudo ./execNS ns3 ../../build/tests/ethernet/set_receiver veth3-0 100
 + wait
-+ sudo ./execNS ns1 ../../build/tests/ethernet/test_ethernet veth1-2 72:c3:cc:32:85:d3
-^C
-Script done on 2023-10-07 22:42:13+08:00 [COMMAND_EXIT_CODE="130"]
++ sudo ./execNS ns4 ../../build/tests/ethernet/set_sender veth4-3 5e:b3:f8:2c:22:86 100
++ sudo ./execNS ns3 ../../build/tests/ethernet/set_sender veth3-4 d6:b3:0e:16:68:01 100
++ sudo ./execNS ns0 ../../build/tests/ethernet/set_sender veth0-3 c2:af:8e:a8:bb:e2 100
++ sudo ./execNS ns2 ../../build/tests/ethernet/set_receiver veth2-1 100
++ sudo ./execNS ns3 ../../build/tests/ethernet/set_sender veth3-0 be:4b:b0:45:f3:94 100
++ sudo ./execNS ns1 ../../build/tests/ethernet/set_receiver veth1-2 100
++ sudo ./execNS ns3 ../../build/tests/ethernet/set_receiver veth3-4 100
++ sudo ./execNS ns1 ../../build/tests/ethernet/set_sender veth1-2 0e:81:0f:32:f4:26 100
++ sudo ./execNS ns2 ../../build/tests/ethernet/set_sender veth2-1 32:03:88:c8:a4:75 100
++ sudo ./execNS ns2 ../../build/tests/ethernet/set_receiver veth2-3 100
++ sudo ./execNS ns4 ../../build/tests/ethernet/set_receiver veth4-3 100
++ sudo ./execNS ns3 ../../build/tests/ethernet/set_receiver veth3-2 100
++ sudo ./execNS ns3 ../../build/tests/ethernet/set_sender veth3-2 36:08:fd:4c:5b:b4 100
++ sudo ./execNS ns2 ../../build/tests/ethernet/set_sender veth2-3 d6:7c:c4:3b:05:ea 100
++ sudo ./execNS ns0 ../../build/tests/ethernet/set_receiver veth0-3 100
++ cd ../examples/
++ sudo ./removeVNet
++ exit
+
+Script done on 2023-10-08 17:23:11+08:00 [COMMAND_EXIT_CODE="0"]

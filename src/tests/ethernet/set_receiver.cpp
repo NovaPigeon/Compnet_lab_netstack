@@ -20,18 +20,21 @@ int recvFrameCallback_new(const void *frame, int len, dev_id id)
         return 0;
     uint16_t ethtype = ntohs(*(uint16_t *)(frame_ + ETHER_ADDR_LEN * 2));
     size_t payload_len = len - ETHER_CRC_LEN - ETHER_HDR_LEN;
-    u_char *payload = (u_char *)malloc(payload_len);
+    u_char *payload = (u_char *)malloc(payload_len+1);
+    memset(payload,0,payload_len+1);
     memcpy(payload, frame_ + ETHER_HDR_LEN, payload_len);
     const char *name = m.getDevice(id)->getDeviceName();
     printf("[INFO] Device %s receive frame %d.\n"
            "src_mac: %02x:%02x:%02x:%02x:%02x:%02x\n"
            "dst_mac: %02x:%02x:%02x:%02x:%02x:%02x\n"
            "pay_load: %s\n"
+           "pay_load_len: %ld\n"
            "ethtype: 0x%x\n\n",
            name,cnt,
            src_mac[0], src_mac[1], src_mac[2], src_mac[3], src_mac[4], src_mac[5],
            dst_mac[0], dst_mac[1], dst_mac[2], dst_mac[3], dst_mac[4], dst_mac[5],
            payload,
+           payload_len,
            ethtype);
     free(payload);
     fflush(stdout);
