@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblab-netstack.a "CMakeFiles/lab-netstack.dir/device.cpp.o" "CMakeFiles/lab-netstack.dir/callback.cpp.o"
+/usr/bin/ranlib liblab-netstack.a

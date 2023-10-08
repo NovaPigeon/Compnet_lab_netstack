@@ -16,7 +16,7 @@ case "$choice" in
     ;;
   "HANDIN")
     mkdir -p ./"$handinpack"
-    cp -r ./CMakeLists.txt ./run.sh ./src/ ./checkpoints/ ./vnetUtils/ ./"$handinpack" 
+    cp -r ./CMakeLists.txt ./run.sh ./src/ ./checkpoints/ ./vnetUtils/ ./README.md ./README.pdf ./not-implemented.pdf ./"$handinpack" 
     tar -czvf "$handinpack".tar ./"$handinpack"
     rm -rf ./"$handinpack"
     ;;

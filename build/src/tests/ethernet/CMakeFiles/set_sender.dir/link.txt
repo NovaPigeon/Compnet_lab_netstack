@@ -1,0 +1,1 @@
+/usr/bin/clang++ -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/binutils/lib CMakeFiles/set_sender.dir/set_sender.cpp.o -o ../../../tests/ethernet/set_sender  ../../lib/liblab-netstack.a -lpcap 
