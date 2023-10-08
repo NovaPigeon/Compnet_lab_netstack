@@ -1,1 +1,0 @@
-/usr/bin/clang++ -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/binutils/lib CMakeFiles/set_receiver.dir/set_receiver.cpp.o -o ../../../tests/ethernet/set_receiver  ../../lib/liblab-netstack.a -lpcap 

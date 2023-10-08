@@ -1,1 +1,0 @@
-/usr/bin/clang++ -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/binutils/lib CMakeFiles/test_device_manager.dir/test_device_manager.cpp.o -o ../../../tests/ethernet/test_device_manager  ../../lib/liblab-netstack.a -lpcap 
