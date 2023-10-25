@@ -1,0 +1,7 @@
+setUpHost
+sleep 10
+printRouteTable
+sendIPPacket 192.24.0.1 192.24.8.2
+sendIPPacket 192.24.0.1 192.24.8.2
+sendIPPacket 192.24.0.1 192.24.8.2
+sleep 15

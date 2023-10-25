@@ -8,11 +8,18 @@
 
 #include <pcap/pcap.h>
 #include <netinet/ether.h>
+#include <netinet/ip.h>
 #include <thread>
 #include <vector>
 #include <shared_mutex>
 #include <string.h>
+#include <map>
+#include <atomic>
+#include "../include/utils.h"
 #include "../include/type.h"
+#include "../include/IP.h"
+#include "../include/route.h"
+
 class Device;
 class DeviceManager;
 
@@ -35,14 +42,21 @@ public:
     const char *getDeviceName() const;
     const int getDeviceID() const;
     const u_char *getDeviceMac() const;
+    ip_addr_t getDeviceIP() const;
+    ip_addr_t getDeviceSubnetMask() const;
+    std::string arpQueryMac(ip_addr_t ip);
+    int arpInsert(ip_addr_t ip, std::string mac);
 
 private:
     char *dev_name_;
     char ebuf_[PCAP_ERRBUF_SIZE];
     u_char mac_[ETHER_ADDR_LEN];
+    ip_addr_t device_ip_;
+    ip_addr_t subnet_mask_;
     pcap_t *handle_;
     DeviceManager *manager_;
     dev_id id_;
+    std::atomic<bool> is_run;
     std::thread *receive_frame_thread_;
     frameReceiveCallback receive_call_back_;
     std::shared_timed_mutex device_mutex;
@@ -62,12 +76,39 @@ public:
     dev_id addDevice(const char * dev_name);
     Device *findDevice(const char * dev_name);
     Device *getDevice(dev_id id);
+    Device *getDeviceByIP(ip_addr_t ip);
+    Device *getDeviceByIPPrefix(ip_addr_t ip);
     void printAllValidDevice() const;
     void printAllAddedDevice() const;
+    void printARPCache() const;
+    void printRouteTable(int verbose);
+    std::string arpQueryMac(ip_addr_t ip);
+    int arpInsert(ip_addr_t ip,std::string mac);
+    int arpDelete(ip_addr_t ip,ip_addr_t netmask);
+    int sendIPPacket(ip_addr_t src, ip_addr_t dest, int proto, void *buf, int len);
+    int setIPPacketReceiveCallback(IPPacketReceiveCallback callback);
+    RouteTable route_table;
+
 private:
     std::vector<Device *> devices_list_;
     std::shared_timed_mutex manager_mutex;
+    std::map<ip_addr_t,std::string,ipcmp> arp_cache;
+    std::shared_timed_mutex arp_cache_mutex;
+    uint64_t update_timer;
+    std::thread *route_thread;
+    IPPacketReceiveCallback IPcallback;
+    std::atomic<bool> is_run;
+    void routeTableUpdate();
+    friend int handleIPPacket(DeviceManager *manager, Device *dev, void *pkt, int len);
+    friend int IPForward(DeviceManager *manager, Device *dev, void *pkt, int len);
 };
 void deviceRecvFrame(Device *device);
 void deviceRecvPcapHandler(u_char *args, const pcap_pkthdr *head, const u_char *packet);
+
+int sendRIPRequest(DeviceManager *manager,Device *dev);
+int sendRIPReply(DeviceManager *manager,Device *dev);
+int handleRIPRequest(DeviceManager *manager,Device *dev, void *pkt, int len);
+int handleRIPReply(DeviceManager *manager, Device *dev, void *pkt, int len);
+
+int handleIPPacket(DeviceManager *manager,Device *dev,void *pkt,int len);
 #endif

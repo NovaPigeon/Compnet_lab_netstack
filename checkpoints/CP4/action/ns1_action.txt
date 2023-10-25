@@ -1,0 +1,18 @@
+setUpHost
+sleep 10
+printRouteTable
+printARPCache
+sendIPPacket 10.100.1.1 10.100.3.2
+sleep 10
+sendIPPacket 10.100.1.1 10.100.3.2
+sleep 5
+printARPCache
+sleep 20
+printRouteTable
+printARPCache
+sleep 10
+printRouteTable
+printARPCache
+sendIPPacket 10.100.1.1 10.100.3.2
+sleep 10
+

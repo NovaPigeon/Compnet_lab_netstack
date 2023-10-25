@@ -1,0 +1,8 @@
+setUpHost
+sleep 10
+printRouteTable
+deactivateHost
+sleep 20
+setUpHost
+sleep 10
+printRouteTable

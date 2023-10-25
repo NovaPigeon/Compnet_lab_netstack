@@ -1,0 +1,13 @@
+setUpHost
+sleep 10
+printRouteTable
+printARPCache
+sleep 15
+printARPCache
+deactivateHost
+sleep 20
+setUpHost
+sleep 10
+printRouteTable
+printARPCache
+sleep 10

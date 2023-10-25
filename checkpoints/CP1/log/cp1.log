@@ -2,11 +2,17 @@
 > findAllValidDevice
 All valid devices below: 
 device veth3-2: (null)
-	MAC: FA:5E:89:BD:2C:83
+	ether: 12:F8:91:64:D1:72
+	inet: 10.100.2.2
+	netmask: 255.255.255.0
 device veth3-4: (null)
-	MAC: FE:01:4C:D2:DB:89
+	ether: 7A:6C:F7:82:7A:1A
+	inet: 10.100.3.1
+	netmask: 255.255.255.0
 device veth3-0: (null)
-	MAC: 7E:3B:A2:E6:BD:49
+	ether: 12:E0:80:73:AC:76
+	inet: 10.100.4.2
+	netmask: 255.255.255.0
 device any: Pseudo-device that captures on all interfaces
 device nflog: Linux netfilter log (NFLOG) interface
 device nfqueue: Linux netfilter queue (NFQUEUE) interface
@@ -18,3 +24,36 @@ Add device veth3-0 :ID 0
 > findDevice veth3-2
 Device not found with name: veth3-2
 > addDevice veth3-2
+Add device veth3-2 :ID 1
+> findAllAddedDevice
+All added devices below: 
+device 0 veth3-0: 
+	ether 12:e0:80:73:ac:76
+	inet: 10.100.4.2
+	netmask: 255.255.255.0
+device 1 veth3-2: 
+	ether 12:f8:91:64:d1:72
+	inet: 10.100.2.2
+	netmask: 255.255.255.0
+> findDevice veth3-2
+Found device with name: veth3-2;ID :1
+> findDevice veth-err
+Device not found with name: veth-err
+> addDevice veth-err
+> addDevice veth3-4
+Add device veth3-4 :ID 2
+> findAllAddedDevice
+All added devices below: 
+device 0 veth3-0: 
+	ether 12:e0:80:73:ac:76
+	inet: 10.100.4.2
+	netmask: 255.255.255.0
+device 1 veth3-2: 
+	ether 12:f8:91:64:d1:72
+	inet: 10.100.2.2
+	netmask: 255.255.255.0
+device 2 veth3-4: 
+	ether 7a:6c:f7:82:7a:1a
+	inet: 10.100.3.1
+	netmask: 255.255.255.0
+> exit

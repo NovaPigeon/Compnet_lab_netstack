@@ -1,8 +1,6 @@
 mkdir log
-cd ../../build
-make
 set -x
-cd ../vnetUtils/examples
+cd ../../vnetUtils/examples
 sudo ./makeVNet <example.txt
 cd ../helper/
 sudo ./execNS ns3 ifconfig
@@ -13,6 +11,7 @@ sudo ./execNS ns3 \
 1> ../../checkpoints/CP1/log/cp1.log \
 2>/dev/null &
 # 2> ../../checkpoints/CP1/log/cp1_info.log
+wait
 
 cd ../examples/
 sudo ./removeVNet <example.txt

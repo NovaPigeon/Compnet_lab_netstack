@@ -1,0 +1,39 @@
+> setUpHost
+Set up the Host.
+Add Device veth1-2.
+Set IP receive callback.
+All added devices below: 
+device 0 veth1-2: 
+	ether ba:d0:37:aa:39:47
+	inet: 10.100.1.1
+	netmask: 255.255.255.0
+[INFO][DeviceManager::printARPCache()]
+-------------------------------------------------------------------
+| IP                             | MAC                            |
+-------------------------------------------------------------------
+| 10.100.1.1                     | ba:d0:37:aa:39:47              |
+-------------------------------------------------------------------
+[INFO][DeviceManager::printRouteTable()]
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.1.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+> 
+> sleep 10
+Sleep 10 seconds.
+[INFO] Receive IP Packet with length 78: 
+IP version: 4
+Type of Service: 0x00
+Total Length: 78
+Identification for fragment: 0x4000
+Time to live: 16
+Protocol: 0xfd
+Header checksum: 0xf744
+Source IP: 10.100.1.2
+Destination IP: 10.100.1.1
+Pay load: Hello! This is an IP packet from 10.100.1.2 to 10.100.1.1.
+
+> 
+> exit

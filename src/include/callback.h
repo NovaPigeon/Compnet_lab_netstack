@@ -10,5 +10,8 @@
 namespace ether_recv_callback{
     int recvFrameCallback(const void *frame,int len,dev_id id);
 }
+namespace IP_recv_callback{
+    int recvIPCallback(const void *pkt,int len);
+}
 
 #endif

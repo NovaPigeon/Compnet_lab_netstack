@@ -1,0 +1,78 @@
+> setUpHost
+Set up the Host.
+Add Device veth4-2.
+Set IP receive callback.
+All added devices below: 
+device 0 veth4-2: 
+	ether f6:c6:41:98:d0:3d
+	inet: 192.24.8.2
+	netmask: 255.255.252.0
+[INFO][DeviceManager::printARPCache()]
+-------------------------------------------------------------------
+| IP                             | MAC                            |
+-------------------------------------------------------------------
+| 192.24.8.2                     | f6:c6:41:98:d0:3d              |
+-------------------------------------------------------------------
+[INFO][DeviceManager::printRouteTable()]
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 192.24.8.0      | 255.255.252.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+> 
+> sleep 10
+Sleep 10 seconds.
+> 
+> printRouteTable
+[INFO][DeviceManager::printRouteTable()]
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 192.24.0.0      | 255.255.224.0   | 192.24.8.1      | 1               | 5               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 192.24.16.0     | 255.255.240.0   | 192.24.8.1      | 1               | 5               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 192.24.8.0      | 255.255.252.0   | 0.0.0.0         | 0               | 5               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+> 
+> sleep 15
+Sleep 15 seconds.
+[INFO] Receive IP Packet with length 78: 
+IP version: 4
+Type of Service: 0x00
+Total Length: 78
+Identification for fragment: 0x4000
+Time to live: 15
+Protocol: 0xfd
+Header checksum: 0x8dd4
+Source IP: 192.24.0.1
+Destination IP: 192.24.8.2
+Pay load: Hello! This is an IP packet from 192.24.0.1 to 192.24.8.2.
+
+[INFO] Receive IP Packet with length 78: 
+IP version: 4
+Type of Service: 0x00
+Total Length: 78
+Identification for fragment: 0x4000
+Time to live: 15
+Protocol: 0xfd
+Header checksum: 0x8dd4
+Source IP: 192.24.0.1
+Destination IP: 192.24.8.2
+Pay load: Hello! This is an IP packet from 192.24.0.1 to 192.24.8.2.
+
+[INFO] Receive IP Packet with length 78: 
+IP version: 4
+Type of Service: 0x00
+Total Length: 78
+Identification for fragment: 0x4000
+Time to live: 15
+Protocol: 0xfd
+Header checksum: 0x8dd4
+Source IP: 192.24.0.1
+Destination IP: 192.24.8.2
+Pay load: Hello! This is an IP packet from 192.24.0.1 to 192.24.8.2.
+
+> 

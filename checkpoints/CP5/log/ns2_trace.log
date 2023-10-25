@@ -1,0 +1,1214 @@
+[ERROR][Device::findDevice()] Device veth2-1 not found.
+[INFO][Device()::addDevice()] Add device veth2-1, whose mac address is 5a:47:4f:9c:6b:65.
+[INFO][Device::Device()] The IP address of veth2-1 is 10.100.1.2, subnet mask is 255.255.255.0
+[INFO][DeviceManager::arpInsert()] Insert entry with IP 10.100.1.2 and MAC 5a:47:4f:9c:6b:65 in the arp_cache.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.1.2 and next hop IP 0.0.0.0.
+[ERROR][Device::findDevice()] Device veth2-3 not found.
+[INFO][Device()::addDevice()] Add device veth2-3, whose mac address is c2:32:e3:69:ea:31.
+[INFO][Device::Device()] The IP address of veth2-3 is 10.100.2.1, subnet mask is 255.255.255.0
+[INFO][DeviceManager::arpInsert()] Insert entry with IP 10.100.2.1 and MAC c2:32:e3:69:ea:31 in the arp_cache.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.2.1 and next hop IP 0.0.0.0.
+[ERROR][Device::findDevice()] Device veth2-5 not found.
+[INFO][Device()::addDevice()] Add device veth2-5, whose mac address is f6:9e:ed:df:dc:a8.
+[INFO][Device::Device()] The IP address of veth2-5 is 10.100.4.1, subnet mask is 255.255.255.0
+[INFO][DeviceManager::arpInsert()] Insert entry with IP 10.100.4.1 and MAC f6:9e:ed:df:dc:a8 in the arp_cache.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.4.1 and next hop IP 0.0.0.0.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from 5a:47:4f:9c:6b:65 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from 5a:47:4f:9c:6b:65 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from f6:9e:ed:df:dc:a8 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to 33:33:ff:9b:1f:3d with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from f6:9e:ed:df:dc:a8 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from f6:9e:ed:df:dc:a8 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from f6:9e:ed:df:dc:a8 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from c2:32:e3:69:ea:31 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from c2:32:e3:69:ea:31 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from 5a:47:4f:9c:6b:65 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-5 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from c2:32:e3:69:ea:31 to 33:33:00:00:00:16 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[INFO][DeviceManager::printRouteTable()]
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.1.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.2.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.3.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.4.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+[INFO][DeviceManager::printRouteTable()]
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.1.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.2.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.3.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.4.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.6.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.4.2.
+[INFO][DeviceManager::printRouteTable()]
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.1.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.2.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.3.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.4.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.5.0      | 255.255.255.0   | 10.100.4.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.6.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-5 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from f6:9e:ed:df:dc:a8 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from c2:32:e3:69:ea:31 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from 5a:47:4f:9c:6b:65 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-5 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-5 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-5 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from 5a:47:4f:9c:6b:65 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from c2:32:e3:69:ea:31 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.2.2.
+[INFO][DeviceManager::printRouteTable()]
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.1.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.2.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.3.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.4.0      | 255.255.255.0   | 0.0.0.0         | 0               | 2               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.5.0      | 255.255.255.0   | 10.100.2.2      | 2               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.6.0      | 255.255.255.0   | 10.100.2.2      | 1               | 4               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from f6:9e:ed:df:dc:a8 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][RouteTable::delete_route_item()] Delete the route item with IP prefix 10.100.4.0.
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.1.0      | 255.255.255.0   | 0.0.0.0         | 0               | 5               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.2.0      | 255.255.255.0   | 0.0.0.0         | 0               | 4               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.3.0      | 255.255.255.0   | 10.100.2.2      | 1               | 4               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.5.0      | 255.255.255.0   | 10.100.2.2      | 16              | 0               | 2               | 0               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.6.0      | 255.255.255.0   | 10.100.2.2      | 1               | 4               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][RouteTable::delete_route_item()] Delete the route item with IP prefix 10.100.5.0.
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.1.0      | 255.255.255.0   | 0.0.0.0         | 0               | 5               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.2.0      | 255.255.255.0   | 0.0.0.0         | 0               | 4               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.3.0      | 255.255.255.0   | 10.100.2.2      | 1               | 4               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.6.0      | 255.255.255.0   | 10.100.2.2      | 1               | 4               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from f6:9e:ed:df:dc:a8 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame's destination dosn't match, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from 5a:47:4f:9c:6b:65 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from c2:32:e3:69:ea:31 to 33:33:00:00:00:02 with ETHERTYPE 0x86dd.
+[INFO] The frame is from itself, drop it.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-5 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.4.0 and next hop IP 10.100.4.2.
+[INFO][DeviceManager::printRouteTable()]
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.1.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.2.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.3.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.4.0      | 255.255.255.0   | 10.100.4.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.6.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.4.2.
+[INFO][DeviceManager::printRouteTable()]
+-------------------------------------------------------------------------------------------------------------------------------
+| Destination IP  | Net Mask        | Next Hop IP     | Distance        | Invalid Timer   | Flush Timer     | Valid           |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.1.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.2.0      | 255.255.255.0   | 0.0.0.0         | 0               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.3.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.4.0      | 255.255.255.0   | 10.100.4.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.5.0      | 255.255.255.0   | 10.100.4.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+| 10.100.6.0      | 255.255.255.0   | 10.100.2.2      | 1               | 6               | 4               | 1               |
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-5 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.4.0 and next hop IP 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-5 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.4.0 and next hop IP 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-1 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-3 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-3 with mac c2:32:e3:69:ea:31 capture an Ethernet frame from 92:3a:8f:83:33:a5 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-3 found with id 1 and ip 10.100.2.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-3 found with id 1 and ip 10.100.2.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.3.0 and next hop IP 10.100.2.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.6.1 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.6.0 and next hop IP 10.100.2.2.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP request packet.
+[INFO][handleRIPRequest()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.
+[INFO][sendRIPReply()] Device veth2-5 send RIP reply.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-5 with mac f6:9e:ed:df:dc:a8 capture an Ethernet frame from 0e:b2:e3:9b:1f:3d to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-5 found with id 2 and ip 10.100.4.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-5 found with id 2 and ip 10.100.4.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.4.0 and next hop IP 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][RouteTable::set_route_item()] Insert the route item with IP 10.100.5.0 and next hop IP 10.100.4.2.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 10.100.5.2 not found.
+
+[INFO][deviceRecvPcapHandler()] Device veth2-1 with mac 5a:47:4f:9c:6b:65 capture an Ethernet frame from c2:fb:58:fa:40:44 to ff:ff:ff:ff:ff:ff with ETHERTYPE 0x0123.
+[INFO] The frame is RIP response packet.
+[INFO][handleRIPReply()]
+[INFO][Device::getDeviceByIPPrefix(ip)] Device veth2-1 found with id 0 and ip 10.100.1.1.
+[ERROR][Device::getDeviceByIP(ip)] Device with IP 0.0.0.0 not found.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][Device::getDeviceByIP(ip)] Device veth2-1 found with id 0 and ip 10.100.1.2.
+[INFO][sendRIPRequest()] Device veth2-3 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-3 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-1 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-1 send ether frame with ethtype 0x123.
+[INFO][sendRIPRequest()] Device veth2-5 send RIP request.
+[INFO][Device::sendFrame()] Device veth2-5 send ether frame with ethtype 0x123.

@@ -4,6 +4,10 @@
  */
 
 #include "../include/callback.h"
+#include "../include/IP.h"
+#include "../include/type.h"
+#include "../include/utils.h"
+#include "../include/debug.h"
 #include <cstdio>
 #include <cstring>
 #include <netinet/ether.h>
@@ -35,5 +39,66 @@ int ether_recv_callback::recvFrameCallback(const void *frame, int len, dev_id id
            ethtype);
     free(payload);
     fflush(stdout);
+    return 0;
+}
+
+int IP_recv_callback::recvIPCallback(const void *pkt, int len)
+{
+    IPPacket ip_pkt;
+    memcpy(ip_pkt.header,pkt,IPHDR_LEN);
+    u_char *payload=(u_char *)malloc(len-IPHDR_LEN);
+    memcpy(payload,(u_char *)pkt+IPHDR_LEN,len-IPHDR_LEN);
+    ip_pkt.IPntohs();
+    char ip_src_str[IP_STR_LEN];
+    char ip_dst_str[IP_STR_LEN];
+    ip_addr_to_str(ip_pkt.header->ip_src,ip_src_str);
+    ip_addr_to_str(ip_pkt.header->ip_dst,ip_dst_str);
+    printf("[INFO] Receive IP Packet with length %d: \n"
+           "IP version: %d\n"
+           "Type of Service: 0x%02x\n"
+           "Total Length: %d\n"
+           "Identification for fragment: 0x%04x\n"
+           "Time to live: %d\n"
+           "Protocol: 0x%02x\n"
+           "Header checksum: 0x%04x\n"
+           "Source IP: %s\n"
+           "Destination IP: %s\n"
+           "Pay load: %s\n\n",
+           len,
+           ip_pkt.header->ip_v,
+           ip_pkt.header->ip_tos,
+           ip_pkt.header->ip_len,
+           ip_pkt.header->ip_off,
+           ip_pkt.header->ip_ttl,
+           ip_pkt.header->ip_p,
+           ip_pkt.header->ip_sum,
+           ip_src_str,
+           ip_dst_str,
+           payload
+           );
+    dbg_printf("[INFO] Receive IP Packet with length %d: \n"
+           "IP version: %d\n"
+           "Type of Service: 0x%02x\n"
+           "Total Length: %d\n"
+           "Identification for fragment: 0x%04x\n"
+           "Time to live: %d\n"
+           "Protocol: 0x%02x\n"
+           "Header checksum: 0x%04x\n"
+           "Source IP: %s\n"
+           "Destination IP: %s\n"
+           "Pay load: %s\n\n",
+           len,
+           ip_pkt.header->ip_v,
+           ip_pkt.header->ip_tos,
+           ip_pkt.header->ip_len,
+           ip_pkt.header->ip_off,
+           ip_pkt.header->ip_ttl,
+           ip_pkt.header->ip_p,
+           ip_pkt.header->ip_sum,
+           ip_src_str,
+           ip_dst_str,
+           payload);
+    fflush(stdout);
+    free(payload);
     return 0;
 }

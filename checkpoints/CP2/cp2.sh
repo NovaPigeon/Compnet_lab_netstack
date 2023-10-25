@@ -38,6 +38,11 @@ veth3_2=$(get_ether_address "veth3-2" "ns3")
 veth3_4=$(get_ether_address "veth3-4" "ns3")
 veth4_3=$(get_ether_address "veth4-3" "ns4")
 
+sudo ./execNS ns1 ./bypassKernel
+sudo ./execNS ns2 ./bypassKernel
+sudo ./execNS ns3 ./bypassKernel
+sudo ./execNS ns4 ./bypassKernel
+
 # veth0-3 and veth3-0
 
 sudo ./execNS ns0 \
