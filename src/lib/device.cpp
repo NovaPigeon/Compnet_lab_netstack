@@ -271,9 +271,7 @@ DeviceManager::DeviceManager()
                    ebuf);
     }
     this->update_timer=RIP_UPDATE_TIME;
-    this->route_thread=new std::thread(&DeviceManager::routeTableUpdate,this);
-    this->is_run.store(true);
-    this->route_thread->detach();
+    this->route_thread=nullptr;
     this->IPcallback=nullptr;
     this->route_table.manager=(void *)this;
 }
@@ -398,6 +396,13 @@ FOUND:
                                         next_hop,
                                         0);
     free(mac);
+
+    if(this->route_thread==nullptr)
+    {
+        this->route_thread = new std::thread(&DeviceManager::routeTableUpdate, this);
+        this->is_run.store(true);
+        this->route_thread->detach();
+    }
     this->manager_mutex.unlock();
     return id;
 }

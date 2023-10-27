@@ -4,5 +4,5 @@ printRouteTable
 deactivateHost
 sleep 20
 setUpHost
-sleep 10
+sleep 20
 printRouteTable

@@ -1,4 +1,4 @@
-Script started on 2023-10-25 23:31:16+08:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="110" LINES="11"]
+Script started on 2023-10-27 16:19:08+08:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="104" LINES="15"]
 + rm -r ./log
 + mkdir ./log
 + cd ../../vnetUtils/helper
@@ -13,9 +13,9 @@ Script started on 2023-10-25 23:31:16+08:00 [TERM="xterm-256color" TTY="/dev/pts
 + ./execNS ns2 ./bypassKernel
 + ./execNS ns3 ./bypassKernel
 + ./execNS ns4 ./bypassKernel
++ ./execNS ns2 ../../build/tests/ip/host_manager ../../checkpoints/CP4/action/ns2_action.txt
 + wait
 + ./execNS ns4 ../../build/tests/ip/host_manager ../../checkpoints/CP4/action/ns4_action.txt
-+ ./execNS ns2 ../../build/tests/ip/host_manager ../../checkpoints/CP4/action/ns2_action.txt
 + ./execNS ns3 ../../build/tests/ip/host_manager ../../checkpoints/CP4/action/ns3_action.txt
 + ./execNS ns1 ../../build/tests/ip/host_manager ../../checkpoints/CP4/action/ns1_action.txt
 + ./delNS ns1
@@ -23,4 +23,4 @@ Script started on 2023-10-25 23:31:16+08:00 [TERM="xterm-256color" TTY="/dev/pts
 + ./delNS ns3
 + ./delNS ns4
 
-Script done on 2023-10-25 23:32:24+08:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2023-10-27 16:20:16+08:00 [COMMAND_EXIT_CODE="0"]

@@ -2,15 +2,15 @@
 > findAllValidDevice
 All valid devices below: 
 device veth3-2: (null)
-	ether: 12:F8:91:64:D1:72
+	ether: 3E:5E:73:69:DC:10
 	inet: 10.100.2.2
 	netmask: 255.255.255.0
 device veth3-4: (null)
-	ether: 7A:6C:F7:82:7A:1A
+	ether: 2A:64:54:EE:72:C3
 	inet: 10.100.3.1
 	netmask: 255.255.255.0
 device veth3-0: (null)
-	ether: 12:E0:80:73:AC:76
+	ether: AE:B5:89:6B:AF:1E
 	inet: 10.100.4.2
 	netmask: 255.255.255.0
 device any: Pseudo-device that captures on all interfaces
@@ -28,11 +28,11 @@ Add device veth3-2 :ID 1
 > findAllAddedDevice
 All added devices below: 
 device 0 veth3-0: 
-	ether 12:e0:80:73:ac:76
+	ether ae:b5:89:6b:af:1e
 	inet: 10.100.4.2
 	netmask: 255.255.255.0
 device 1 veth3-2: 
-	ether 12:f8:91:64:d1:72
+	ether 3e:5e:73:69:dc:10
 	inet: 10.100.2.2
 	netmask: 255.255.255.0
 > findDevice veth3-2
@@ -45,15 +45,15 @@ Add device veth3-4 :ID 2
 > findAllAddedDevice
 All added devices below: 
 device 0 veth3-0: 
-	ether 12:e0:80:73:ac:76
+	ether ae:b5:89:6b:af:1e
 	inet: 10.100.4.2
 	netmask: 255.255.255.0
 device 1 veth3-2: 
-	ether 12:f8:91:64:d1:72
+	ether 3e:5e:73:69:dc:10
 	inet: 10.100.2.2
 	netmask: 255.255.255.0
 device 2 veth3-4: 
-	ether 7a:6c:f7:82:7a:1a
+	ether 2a:64:54:ee:72:c3
 	inet: 10.100.3.1
 	netmask: 255.255.255.0
 > exit

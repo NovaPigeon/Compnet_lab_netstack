@@ -1,4 +1,4 @@
-Script started on 2023-10-25 23:32:38+08:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="110" LINES="11"]
+Script started on 2023-10-27 16:20:20+08:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="104" LINES="15"]
 + rm -r ./log
 + mkdir ./log
 + cd ../../vnetUtils/helper
@@ -21,10 +21,10 @@ Script started on 2023-10-25 23:32:38+08:00 [TERM="xterm-256color" TTY="/dev/pts
 + ./execNS ns5 ./bypassKernel
 + ./execNS ns6 ./bypassKernel
 + ./execNS ns2 ../../build/tests/ip/host_manager ../../checkpoints/CP5/action/ns2_action.txt
++ ./execNS ns4 ../../build/tests/ip/host_manager ../../checkpoints/CP5/action/ns4_action.txt
 + wait
 + ./execNS ns5 ../../build/tests/ip/host_manager ../../checkpoints/CP5/action/ns5_action.txt
 + ./execNS ns6 ../../build/tests/ip/host_manager ../../checkpoints/CP5/action/ns6_action.txt
-+ ./execNS ns4 ../../build/tests/ip/host_manager ../../checkpoints/CP5/action/ns4_action.txt
 + ./execNS ns3 ../../build/tests/ip/host_manager ../../checkpoints/CP5/action/ns3_action.txt
 + ./execNS ns1 ../../build/tests/ip/host_manager ../../checkpoints/CP5/action/ns1_action.txt
 + ./delNS ns1
@@ -34,4 +34,4 @@ Script started on 2023-10-25 23:32:38+08:00 [TERM="xterm-256color" TTY="/dev/pts
 + ./delNS ns5
 + ./delNS ns6
 
-Script done on 2023-10-25 23:33:20+08:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2023-10-27 16:21:11+08:00 [COMMAND_EXIT_CODE="0"]

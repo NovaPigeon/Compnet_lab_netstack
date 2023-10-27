@@ -237,6 +237,7 @@ void RouteTable::printRouteTable(int verbose)
 void RouteTable::route_table_update()
 {
     std::vector<RouteKey> to_delete;
+    //this->printRouteTable(STDOUT_FILENO);
     this->route_table_mutex.lock_shared();
     if (this->route_table.empty())
     {
@@ -410,13 +411,27 @@ int handleRIPReply(DeviceManager *manager, Device *dev, void *pkt, int len)
                 break;
             }
         }
+        // 如果该表项不在路由表中
         if (found == false && entry.metric != RIP_MAX_DISTANCE && manager->getDeviceByIP(entry.next_hop_ip) == nullptr)
         {
+            int metric;
+            ip_addr_t next_hop;
+            // 如果这是与设备直接相连的网络，只是被重新激活了，那需要将距离设置为 0，并将 nex_hop_ip 设为 0.0.0.0
+            if( manager->getDeviceByIPPrefix(entry.ip_addr)!=nullptr)
+            {
+                metric=0;
+                next_hop.s_addr=0;
+            }
+            else
+            {
+                metric=entry.metric+1;
+                next_hop.s_addr=sender_info.ip_addr.s_addr;
+            }
             manager->route_table.set_route_item(
                 entry.ip_addr,
                 entry.subnet_mask,
-                sender_info.ip_addr,
-                entry.metric + 1);
+                next_hop,
+                metric);
             manager->printRouteTable(STDERR_FILENO);
         }
     }

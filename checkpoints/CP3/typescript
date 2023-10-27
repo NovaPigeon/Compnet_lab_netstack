@@ -1,5 +1,5 @@
-Script started on 2023-10-25 23:30:58+08:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="110" LINES="11"]
-+ rm -r ./log
+Script started on 2023-10-27 16:18:53+08:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="104" LINES="15"]
+'+ rm -r ./log
 + mkdir ./log
 + cd ../../vnetUtils/helper
 + ./addNS ns1
@@ -7,15 +7,15 @@ Script started on 2023-10-25 23:30:58+08:00 [TERM="xterm-256color" TTY="/dev/pts
 + ./connectNS ns1 ns2 veth1-2 veth2-1 10.100.1
 + ./execNS ns1 ./bypassKernel
 + ./execNS ns2 ./bypassKernel
-+ ./execNS ns1 ../../build/tests/ip/host_manager ../../checkpoints/CP3/action/ns1_action.txt
-+ wait
 + ./execNS ns2 tcpdump ip -i veth2-1 -X -vv -c 1 -w ../../checkpoints/CP3/ip_example.pcap
++ wait
++ ./execNS ns1 ../../build/tests/ip/host_manager ../../checkpoints/CP3/action/ns1_action.txt
 + ./execNS ns2 ../../build/tests/ip/host_manager ../../checkpoints/CP3/action/ns2_action.txt
 tcpdump: listening on veth2-1, link-type EN10MB (Ethernet), capture size 262144 bytes
-Got 0Got 0Got 0Got 0Got 0Got 0Got 01 packet captured
+Got 0Got 0Got 0Got 0Got 0Got 01 packet captured
 1 packet received by filter
 0 packets dropped by kernel
 + sudo ./delNS ns1
 + sudo ./delNS ns2
 
-Script done on 2023-10-25 23:31:10+08:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2023-10-27 16:19:04+08:00 [COMMAND_EXIT_CODE="0"]

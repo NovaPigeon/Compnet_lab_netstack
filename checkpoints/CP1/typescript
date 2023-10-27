@@ -1,4 +1,4 @@
-Script started on 2023-10-25 23:30:19+08:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="110" LINES="11"]
+Script started on 2023-10-27 16:18:38+08:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="104" LINES="15"]
 mkdir: cannot create directory ‘log’: File exists
 + cd ../../vnetUtils/examples
 + sudo ./makeVNet
@@ -6,29 +6,29 @@ mkdir: cannot create directory ‘log’: File exists
 + sudo ./execNS ns3 ifconfig
 veth3-0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.100.4.2  netmask 255.255.255.0  broadcast 0.0.0.0
-        inet6 fe80::10e0:80ff:fe73:ac76  prefixlen 64  scopeid 0x20<link>
-        ether 12:e0:80:73:ac:76  txqueuelen 1000  (Ethernet)
-        RX packets 4  bytes 399 (399.0 B)
+        inet6 fe80::acb5:89ff:fe6b:af1e  prefixlen 64  scopeid 0x20<link>
+        ether ae:b5:89:6b:af:1e  txqueuelen 1000  (Ethernet)
+        RX packets 3  bytes 313 (313.0 B)
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 1  bytes 90 (90.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
 veth3-2: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.100.2.2  netmask 255.255.255.0  broadcast 0.0.0.0
-        inet6 fe80::10f8:91ff:fe64:d172  prefixlen 64  scopeid 0x20<link>
-        ether 12:f8:91:64:d1:72  txqueuelen 1000  (Ethernet)
-        RX packets 2  bytes 180 (180.0 B)
+        inet6 fe80::3c5e:73ff:fe69:dc10  prefixlen 64  scopeid 0x20<link>
+        ether 3e:5e:73:69:dc:10  txqueuelen 1000  (Ethernet)
+        RX packets 3  bytes 266 (266.0 B)
         RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 1  bytes 90 (90.0 B)
+        TX packets 2  bytes 176 (176.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
 veth3-4: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.100.3.1  netmask 255.255.255.0  broadcast 0.0.0.0
-        inet6 fe80::786c:f7ff:fe82:7a1a  prefixlen 64  scopeid 0x20<link>
-        ether 7a:6c:f7:82:7a:1a  txqueuelen 1000  (Ethernet)
-        RX packets 1  bytes 90 (90.0 B)
+        inet6 fe80::2864:54ff:feee:72c3  prefixlen 64  scopeid 0x20<link>
+        ether 2a:64:54:ee:72:c3  txqueuelen 1000  (Ethernet)
+        RX packets 2  bytes 176 (176.0 B)
         RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 3  bytes 266 (266.0 B)
+        TX packets 1  bytes 90 (90.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
 + wait
@@ -37,4 +37,4 @@ veth3-4: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 + sudo ./removeVNet
 + set +x
 
-Script done on 2023-10-25 23:30:20+08:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2023-10-27 16:18:39+08:00 [COMMAND_EXIT_CODE="0"]
