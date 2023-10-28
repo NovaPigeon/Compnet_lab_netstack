@@ -1,64 +1,66 @@
-C=`pwd`
+#!/bin/bash
 
 set -x
 rm -r ./log
 mkdir ./log
 cd ../../vnetUtils/helper
-./addNS ns1
-./addNS ns2
-./addNS ns3
-./addNS ns4
-./addNS ns5
-./addNS ns6
-./connectNS ns1 ns2 veth1-2 veth2-1 10.100.1
-./connectNS ns2 ns3 veth2-3 veth3-2 10.100.2
-./connectNS ns3 ns4 veth3-4 veth4-3 10.100.3
-./connectNS ns2 ns5 veth2-5 veth5-2 10.100.4
-./connectNS ns5 ns6 veth5-6 veth6-5 10.100.5
-./connectNS ns6 ns3 veth6-3 veth3-6 10.100.6
+sudo ./addNS ns1
+sudo ./addNS ns2
+sudo ./addNS ns3
+sudo ./addNS ns4
 
-./execNS ns1 ./bypassKernel
-./execNS ns2 ./bypassKernel
-./execNS ns3 ./bypassKernel
-./execNS ns4 ./bypassKernel
-./execNS ns5 ./bypassKernel
-./execNS ns6 ./bypassKernel
+sudo ./addVethPair veth1-2 veth2-1
+sudo ./setNS veth1-2 ns1
+sudo ./setNS veth2-1 ns2
+sudo ./execNS ns1 sudo ./giveAddr veth1-2 192.24.0.1/19
+sudo ./execNS ns2 sudo ./giveAddr veth2-1 192.24.0.2/19
+sudo ./execNS ns1 sudo ./setRoute 192.24.0.0/19 veth1-2
+sudo ./execNS ns2 sudo ./setRoute 192.24.0.0/19 veth2-1
 
-./execNS ns1 ../../build/tests/ip/host_manager \
-../../checkpoints/CP5/action/ns1_action.txt \
-1> ../../checkpoints/CP5/log/ns1_cli.log \
-2> ../../checkpoints/CP5/log/ns1_trace.log &
+sudo ./addVethPair veth2-3 veth3-2
+sudo ./setNS veth2-3 ns2
+sudo ./setNS veth3-2 ns3
+sudo ./execNS ns2 sudo ./giveAddr veth2-3 192.24.16.1/20
+sudo ./execNS ns3 sudo ./giveAddr veth3-2 192.24.16.2/20
+sudo ./execNS ns2 sudo ./setRoute 192.24.16.0/20 veth2-3
+sudo ./execNS ns3 sudo ./setRoute 192.24.16.0/20 veth3-2
 
-./execNS ns2 ../../build/tests/ip/host_manager \
-../../checkpoints/CP5/action/ns2_action.txt \
-1> ../../checkpoints/CP5/log/ns2_cli.log \
-2> ../../checkpoints/CP5/log/ns2_trace.log &
+sudo ./addVethPair veth2-4 veth4-2
+sudo ./setNS veth2-4 ns2
+sudo ./setNS veth4-2 ns4
+sudo ./execNS ns2 sudo ./giveAddr veth2-4 192.24.8.1/22
+sudo ./execNS ns4 sudo ./giveAddr veth4-2 192.24.8.2/22
+sudo ./execNS ns2 sudo ./setRoute 192.24.8.0/22 veth2-4
+sudo ./execNS ns4 sudo ./setRoute 192.24.8.0/22 veth4-2
 
-./execNS ns3 ../../build/tests/ip/host_manager \
-../../checkpoints/CP5/action/ns3_action.txt \
-1> ../../checkpoints/CP5/log/ns3_cli.log \
-2> ../../checkpoints/CP5/log/ns3_trace.log &
+sudo ./execNS ns1 sudo ./bypassKernel
+sudo ./execNS ns2 sudo ./bypassKernel
+sudo ./execNS ns3 sudo ./bypassKernel
+sudo ./execNS ns4 sudo ./bypassKernel
 
-./execNS ns4 ../../build/tests/ip/host_manager \
-../../checkpoints/CP5/action/ns4_action.txt \
-1> ../../checkpoints/CP5/log/ns4_cli.log \
-2> ../../checkpoints/CP5/log/ns4_trace.log &
+sudo ./execNS ns1 ../../build/tests/ip/host_manager \
+../../checkpoints/CP6/action/ns1_action.txt \
+1> ../../checkpoints/CP6/log/ns1_cli.log \
+2> ../../checkpoints/CP6/log/ns1_trace.log &
 
-./execNS ns5 ../../build/tests/ip/host_manager \
-../../checkpoints/CP5/action/ns5_action.txt \
-1> ../../checkpoints/CP5/log/ns5_cli.log \
-2> ../../checkpoints/CP5/log/ns5_trace.log &
+sudo ./execNS ns2 ../../build/tests/ip/host_manager \
+../../checkpoints/CP6/action/ns2_action.txt \
+1> ../../checkpoints/CP6/log/ns2_cli.log \
+2> ../../checkpoints/CP6/log/ns2_trace.log &
 
-./execNS ns6 ../../build/tests/ip/host_manager \
-../../checkpoints/CP5/action/ns6_action.txt \
-1> ../../checkpoints/CP5/log/ns6_cli.log \
-2> ../../checkpoints/CP5/log/ns6_trace.log &
+sudo ./execNS ns3 ../../build/tests/ip/host_manager \
+../../checkpoints/CP6/action/ns3_action.txt \
+1> ../../checkpoints/CP6/log/ns3_cli.log \
+2> ../../checkpoints/CP6/log/ns3_trace.log &
+
+sudo ./execNS ns4 ../../build/tests/ip/host_manager \
+../../checkpoints/CP6/action/ns4_action.txt \
+1> ../../checkpoints/CP6/log/ns4_cli.log \
+2> ../../checkpoints/CP6/log/ns4_trace.log &
 
 wait
 
-./delNS ns1
-./delNS ns2
-./delNS ns3
-./delNS ns4
-./delNS ns5
-./delNS ns6
+sudo ./delNS ns1
+sudo ./delNS ns2
+sudo ./delNS ns3
+sudo ./delNS ns4

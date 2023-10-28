@@ -13,7 +13,7 @@
 #include <string>
 #include <ifaddrs.h>
 
-DeviceManager *deviceManager=nullptr;
+DeviceManager *deviceManager = new DeviceManager();
 
 // 解析命令行参数并执行命令
 void executeCommands(const std::string &filename = "")
@@ -61,16 +61,16 @@ void executeCommands(const std::string &filename = "")
         if (command == "activateDeviceManager")
         {
             printf("Activate the device manager.\n");
-            if(deviceManager==nullptr)
-                deviceManager=new DeviceManager();
+            if (deviceManager == nullptr)
+                deviceManager = new DeviceManager();
         }
-        else if(command == "deactivateHost")
+        else if (command == "deactivateHost")
         {
             printf("Deactivate the Host.\n");
-            if(deviceManager!=nullptr)
-            {   
+            if (deviceManager != nullptr)
+            {
                 delete deviceManager;
-                deviceManager=nullptr;
+                deviceManager = nullptr;
             }
         }
         else if (command == "addDevice")
@@ -80,6 +80,8 @@ void executeCommands(const std::string &filename = "")
                 std::cerr << "[ERROR][test_device_manager]: addDevice command requires 1 argument (device name)" << std::endl;
                 continue;
             }
+            if (deviceManager == nullptr)
+                deviceManager = new DeviceManager();
             const char *deviceName = tokens[1].c_str();
             int ret = deviceManager->addDevice(deviceName);
             if (ret == -1)
@@ -117,18 +119,18 @@ void executeCommands(const std::string &filename = "")
         {
             deviceManager->setIPPacketReceiveCallback(IP_recv_callback::recvIPCallback);
         }
-        else if(command=="printARPCache")
+        else if (command == "printARPCache")
         {
             deviceManager->printARPCache();
         }
-        else if(command=="printRouteTable")
+        else if (command == "printRouteTable")
         {
             deviceManager->printRouteTable(STDOUT_FILENO);
         }
-        else if(command=="sleep")
+        else if (command == "sleep")
         {
-            int time=atoi(tokens[1].c_str());
-            printf("Sleep %d seconds.\n",time);
+            int time = atoi(tokens[1].c_str());
+            printf("Sleep %d seconds.\n", time);
             sleep(time);
         }
         else if (command == "sendFrame")
@@ -185,13 +187,18 @@ void executeCommands(const std::string &filename = "")
         }
         else if (command == "exit")
         {
+            if (deviceManager != nullptr)
+            {
+                delete deviceManager;
+                deviceManager = nullptr;
+            }
             return;
         }
-        else if(command=="setUpHost")
+        else if (command == "setUpHost")
         {
             printf("Set up the Host.\n");
-            if(deviceManager==nullptr)
-                deviceManager=new DeviceManager();
+            if (deviceManager == nullptr)
+                deviceManager = new DeviceManager();
             struct ifaddrs *ifa_list = NULL;
             getifaddrs(&ifa_list);
             struct ifaddrs *ifa_entry = ifa_list;
@@ -200,8 +207,7 @@ void executeCommands(const std::string &filename = "")
             bool found = false;
             while (ifa_entry != NULL)
             {
-                if (ifa_entry->ifa_addr->sa_family == AF_INET
-                )
+                if (ifa_entry->ifa_addr->sa_family == AF_INET)
                 {
                     deviceManager->addDevice(ifa_entry->ifa_name);
                     printf("Add Device %s.\n", ifa_entry->ifa_name);
@@ -215,24 +221,24 @@ void executeCommands(const std::string &filename = "")
             deviceManager->printARPCache();
             deviceManager->printRouteTable(STDOUT_FILENO);
         }
-        else if(command=="sendIPPacket")
+        else if (command == "sendIPPacket")
         {
-            std::string ip_src_str=tokens[1];
-            std::string ip_dst_str=tokens[2];
+            std::string ip_src_str = tokens[1];
+            std::string ip_dst_str = tokens[2];
             ip_addr_t ip_src;
-            inet_aton(ip_src_str.c_str(),&ip_src);
+            inet_aton(ip_src_str.c_str(), &ip_src);
             ip_addr_t ip_dst;
-            inet_aton(ip_dst_str.c_str(),&ip_dst);
-        
-            u_char *pay_load=(u_char *)malloc(ETH_DATA_LEN);
-            memset(pay_load,0,ETH_DATA_LEN);
+            inet_aton(ip_dst_str.c_str(), &ip_dst);
+
+            u_char *pay_load = (u_char *)malloc(ETH_DATA_LEN);
+            memset(pay_load, 0, ETH_DATA_LEN);
             int pay_load_len = snprintf((char *)pay_load, ETH_DATA_LEN,
-                                    "Hello! This is an IP packet from %s to %s.",
-                                    ip_src_str.c_str(),
-                                    ip_dst_str.c_str());
-            printf("Host send an IP packet from %s to %s.\n",ip_src_str.c_str(),
-                                    ip_dst_str.c_str());
-            deviceManager->sendIPPacket(ip_src,ip_dst,0xfd,pay_load,pay_load_len);
+                                        "Hello! This is an IP packet from %s to %s.",
+                                        ip_src_str.c_str(),
+                                        ip_dst_str.c_str());
+            printf("Host send an IP packet from %s to %s.\n", ip_src_str.c_str(),
+                   ip_dst_str.c_str());
+            deviceManager->sendIPPacket(ip_src, ip_dst, 0xfd, pay_load, pay_load_len);
             free(pay_load);
         }
         else
@@ -241,7 +247,8 @@ void executeCommands(const std::string &filename = "")
         }
         std::cout << "> " << std::endl;
     }
-
+    if (deviceManager != nullptr)
+        delete deviceManager;
     if (fileStream.is_open())
     {
         fileStream.close();

@@ -1,6 +1,6 @@
 /**
  * @file device.cpp
- * @brief File supports network device management and 
+ * @brief File supports network device management and
  * sending/receiving Ethernet II frames.
  */
 
@@ -24,86 +24,85 @@
 #include <unistd.h>
 
 #define DEVICE_TIME_OUT 1000
-#define MAX_SNAPLEN (1<<16)
+#define MAX_SNAPLEN (1 << 16)
 
 Device::Device(char *dev_name,
-       u_char *mac,
-       dev_id id,
-       DeviceManager *manager)
+               u_char *mac,
+               dev_id id,
+               DeviceManager *manager)
 {
 
-    this->dev_name_=dev_name;
+    this->dev_name_ = dev_name;
 
-    memcpy(this->mac_,mac,ETHER_ADDR_LEN);
-    this->id_=id;
-    this->manager_=manager;
-    memset(this->ebuf_,0,PCAP_ERRBUF_SIZE);
+    memcpy(this->mac_, mac, ETHER_ADDR_LEN);
+    this->id_ = id;
+    this->manager_ = manager;
+    memset(this->ebuf_, 0, PCAP_ERRBUF_SIZE);
 
     /* Get the correspond IP of the device. */
-    struct ifaddrs *ifa_list=NULL;
-    if(getifaddrs(&ifa_list)==-1)
+    struct ifaddrs *ifa_list = NULL;
+    if (getifaddrs(&ifa_list) == -1)
     {
         dbg_printf("[ERROR][Device::Device()] getifaffrs() failed.\n");
         exit(-1);
     }
-    struct ifaddrs *ifa_entry=ifa_list;
-    while(ifa_entry!=NULL)
+    struct ifaddrs *ifa_entry = ifa_list;
+    while (ifa_entry != NULL)
     {
-        if(ifa_entry->ifa_addr->sa_family==AF_INET && //IPv4
-           strcmp(ifa_entry->ifa_name,this->dev_name_)==0 //correspond device name
-        ) 
+        if (ifa_entry->ifa_addr->sa_family == AF_INET &&      // IPv4
+            strcmp(ifa_entry->ifa_name, this->dev_name_) == 0 // correspond device name
+        )
         {
-            this->device_ip_=((sockaddr_in *)(ifa_entry->ifa_addr))->sin_addr;
-            this->subnet_mask_=((sockaddr_in *)(ifa_entry->ifa_netmask))->sin_addr;
-            
+            this->device_ip_ = ((sockaddr_in *)(ifa_entry->ifa_addr))->sin_addr;
+            this->subnet_mask_ = ((sockaddr_in *)(ifa_entry->ifa_netmask))->sin_addr;
+
             char subnet_mask_str[IP_STR_LEN];
             char dev_ip_str[IP_STR_LEN];
-            memset(subnet_mask_str,IP_STR_LEN,0);
-            memset(dev_ip_str,IP_STR_LEN,0);
-            ip_addr_to_str(subnet_mask_,subnet_mask_str);
-            ip_addr_to_str(device_ip_,dev_ip_str);
+            memset(subnet_mask_str, IP_STR_LEN, 0);
+            memset(dev_ip_str, IP_STR_LEN, 0);
+            ip_addr_to_str(subnet_mask_, subnet_mask_str);
+            ip_addr_to_str(device_ip_, dev_ip_str);
             dbg_printf("[INFO][Device::Device()] "
                        "The IP address of %s is %s, "
                        "subnet mask is %s\n",
-                       this->dev_name_, 
+                       this->dev_name_,
                        dev_ip_str,
                        subnet_mask_str);
             break;
         }
-        ifa_entry=ifa_entry->ifa_next;
+        ifa_entry = ifa_entry->ifa_next;
     }
     freeifaddrs(ifa_list);
 
-    this->handle_=pcap_open_live(
+    this->handle_ = pcap_open_live(
         dev_name,
         MAX_SNAPLEN,
         0,
         DEVICE_TIME_OUT,
-        this->ebuf_
-    );
-    
-    if(!this->handle_)
+        this->ebuf_);
+
+    if (!this->handle_)
     {
-        dbg_printf("[ERROR][Device::Device()] pcap_open_live() failed. %s\n",this->ebuf_);
+        dbg_printf("[ERROR][Device::Device()] pcap_open_live() failed. %s\n", this->ebuf_);
         exit(-1);
     }
 
     this->is_run.store(true);
 
-    this->receive_frame_thread_=new std::thread(deviceRecvFrame,this);
+    this->receive_frame_thread_ = new std::thread(deviceRecvFrame, this);
     this->device_mutex.lock();
-    this->receive_call_back_=nullptr;
+    this->receive_call_back_ = nullptr;
     this->device_mutex.unlock();
-    //this->receive_frame_thread_->detach();
+    // this->receive_frame_thread_->detach();
 }
 
 Device::~Device()
 {
     this->is_run.store(false);
-    if(this->handle_!=nullptr)
+    if (this->handle_ != nullptr)
         pcap_close(this->handle_);
-    
-    memset(this->ebuf_,0,PCAP_ERRBUF_SIZE);
+
+    memset(this->ebuf_, 0, PCAP_ERRBUF_SIZE);
     free(this->dev_name_);
 }
 
@@ -117,16 +116,16 @@ Device::~Device()
  * @see addDevice
  */
 int Device::sendFrame(const void *buf, int len,
-              int ethtype, const void *destmac)
+                      int ethtype, const void *destmac)
 {
     dbg_printf("[INFO][Device::sendFrame()] Device %s send ether frame with ethtype 0x%x.\n",
                this->getDeviceName(),
                ethtype);
     /* Check if the params are legal. */
     size_t eth_frame_len = ETHER_HDR_LEN + len + ETHER_CRC_LEN;
-    if(eth_frame_len<=0 ||
-       eth_frame_len>ETHER_MAX_LEN ||
-       ethtype > (1<<16))
+    if (eth_frame_len <= 0 ||
+        eth_frame_len > ETHER_MAX_LEN ||
+        ethtype > (1 << 16))
     {
         dbg_printf(
             "[Error][Device::sendFrame()]"
@@ -151,24 +150,24 @@ int Device::sendFrame(const void *buf, int len,
      * | CRC Check Sum - 4 bytes                                               |
      * +-----------------------------------------------------------------------+
      */
-    u_char *frame=(u_char *)malloc(eth_frame_len);
-    uint16_t ethtype_to_net=htons((uint16_t)ethtype);
-    memcpy(frame,destmac,ETHER_ADDR_LEN);
-    memcpy(frame+ETHER_ADDR_LEN,this->mac_,ETHER_ADDR_LEN);
-    memcpy(frame+ETHER_ADDR_LEN*2,&ethtype_to_net,ETHER_TYPE_LEN);
-    memcpy(frame+ETHER_HDR_LEN,buf,len);
+    u_char *frame = (u_char *)malloc(eth_frame_len);
+    uint16_t ethtype_to_net = htons((uint16_t)ethtype);
+    memcpy(frame, destmac, ETHER_ADDR_LEN);
+    memcpy(frame + ETHER_ADDR_LEN, this->mac_, ETHER_ADDR_LEN);
+    memcpy(frame + ETHER_ADDR_LEN * 2, &ethtype_to_net, ETHER_TYPE_LEN);
+    memcpy(frame + ETHER_HDR_LEN, buf, len);
 
-    /// @todo: check sum 
-    for(int i=eth_frame_len-ETHER_CRC_LEN;i<eth_frame_len;++i)
+    /// @todo: check sum
+    for (int i = eth_frame_len - ETHER_CRC_LEN; i < eth_frame_len; ++i)
     {
-        frame[i]=0;
+        frame[i] = 0;
     }
 
-    int is_send_success=pcap_sendpacket(this->handle_,frame,eth_frame_len);
+    int is_send_success = pcap_sendpacket(this->handle_, frame, eth_frame_len);
 
-    u_char *destmac_=(u_char*)destmac;
+    u_char *destmac_ = (u_char *)destmac;
     free(frame);
-    if(is_send_success==-1)
+    if (is_send_success == -1)
     {
         dbg_printf(
             "[Error][Device::sendFrame()]"
@@ -202,12 +201,11 @@ int Device::sendFrame(const void *buf, int len,
 int Device::setFrameReceiveCallback(frameReceiveCallback callback)
 {
     this->device_mutex.lock();
-    this->receive_call_back_=callback;
+    this->receive_call_back_ = callback;
     this->device_mutex.unlock();
 
     return 0;
 }
-
 
 /**
  * @brief Get the name of the device.
@@ -233,9 +231,9 @@ const u_char *Device::getDeviceMac() const
 
 int Device::stopRecv()
 {
-    if(this->handle_)
+    if (this->handle_)
     {
-        dbg_printf("[INFO][Device::stopRecv()] Device %s stop receive.\n",this->dev_name_);
+        dbg_printf("[INFO][Device::stopRecv()] Device %s stop receive.\n", this->dev_name_);
         pcap_breakloop(this->handle_);
         this->setFrameReceiveCallback(nullptr);
         return 0;
@@ -258,7 +256,7 @@ std::string Device::arpQueryMac(ip_addr_t ip)
 }
 int Device::arpInsert(ip_addr_t ip, std::string mac)
 {
-    return this->manager_->arpInsert(ip,mac);
+    return this->manager_->arpInsert(ip, mac);
 }
 
 DeviceManager::DeviceManager()
@@ -270,19 +268,19 @@ DeviceManager::DeviceManager()
                    " pcap_init error: %s\n",
                    ebuf);
     }
-    this->update_timer=RIP_UPDATE_TIME;
-    this->route_thread=nullptr;
-    this->IPcallback=nullptr;
-    this->route_table.manager=(void *)this;
+    this->update_timer = RIP_UPDATE_TIME;
+    this->route_thread = nullptr;
+    this->IPcallback = nullptr;
+    this->route_table.manager = (void *)this;
 }
 DeviceManager::~DeviceManager()
 {
     this->manager_mutex.lock();
     this->is_run.store(false);
-    if(this->route_thread->joinable())
+    if (this->route_thread->joinable())
         this->route_thread->join();
-    //delete this->route_thread;
-    while(!this->devices_list_.empty())
+    // delete this->route_thread;
+    while (!this->devices_list_.empty())
     {
         delete this->devices_list_.back();
         this->devices_list_.pop_back();
@@ -301,37 +299,37 @@ dev_id DeviceManager::addDevice(const char *dev_name)
     char ebuf[PCAP_ERRBUF_SIZE];
 
     /* Adding device already in the manager is not allowed */
-    if(this->findDevice(dev_name)!=nullptr)
+    if (this->findDevice(dev_name) != nullptr)
     {
         dbg_printf("[ERROR][Device::addDevice()] The device added exists.\n");
         return -1;
     }
 
     pcap_if_t *devs;
-    
-    if(pcap_findalldevs(&devs,ebuf)==-1)
+
+    if (pcap_findalldevs(&devs, ebuf) == -1)
     {
-        dbg_printf("[ERROR][Device::addDevice()] %s\n",ebuf);
+        dbg_printf("[ERROR][Device::addDevice()] %s\n", ebuf);
         return -1;
     }
 
-    bool is_found=false;
+    bool is_found = false;
 
     /* The added device should be legal,
     that is, it should be searchable by pcap_findalldevs. */
-    for(pcap_if_t *dev=devs;dev!=nullptr;dev=dev->next)
+    for (pcap_if_t *dev = devs; dev != nullptr; dev = dev->next)
     {
-        if(strcmp(dev->name,dev_name)==0)
+        if (strcmp(dev->name, dev_name) == 0)
         {
-            for(pcap_addr *a=dev->addresses;a;a=a->next)
+            for (pcap_addr *a = dev->addresses; a; a = a->next)
             {
-                if(a->addr && 
-                   a->addr->sa_family==AF_PACKET &&
-                   ((sockaddr_ll *)a->addr)->sll_hatype==ARPHRD_ETHER)
-                   {
-                        is_found=true;
-                        goto FOUND;
-                   }
+                if (a->addr &&
+                    a->addr->sa_family == AF_PACKET &&
+                    ((sockaddr_ll *)a->addr)->sll_hatype == ARPHRD_ETHER)
+                {
+                    is_found = true;
+                    goto FOUND;
+                }
             }
         }
     }
@@ -351,7 +349,7 @@ FOUND:
                    "Failed to create socket while getting mac.\n");
         return -1;
     }
-    
+
     struct ifreq ifr;
     memset(&ifr, 0, sizeof(ifr));
     strncpy(ifr.ifr_name, dev_name, IFNAMSIZ - 1);
@@ -364,16 +362,16 @@ FOUND:
         return -1;
     }
     close(sockfd);
-    u_char *mac=(u_char *)malloc(ETHER_ADDR_LEN);
-    memcpy(mac,(u_char *)ifr.ifr_hwaddr.sa_data,ETHER_ADDR_LEN);
+    u_char *mac = (u_char *)malloc(ETHER_ADDR_LEN);
+    memcpy(mac, (u_char *)ifr.ifr_hwaddr.sa_data, ETHER_ADDR_LEN);
 
     /* Open a new device */
     this->manager_mutex.lock();
 
-    dev_id id=this->devices_list_.size();
-    char *dev_name_cpy=(char *)malloc(strlen(dev_name)+1);
-    memcpy(dev_name_cpy,dev_name,strlen(dev_name)+1);
-    
+    dev_id id = this->devices_list_.size();
+    char *dev_name_cpy = (char *)malloc(strlen(dev_name) + 1);
+    memcpy(dev_name_cpy, dev_name, strlen(dev_name) + 1);
+
     dbg_printf("[INFO][Device()::addDevice()] "
                "Add device %s, "
                "whose mac address is %02x:%02x:%02x:%02x:%02x:%02x.\n",
@@ -384,23 +382,23 @@ FOUND:
                mac[3],
                mac[4],
                mac[5]);
-    
-    Device *device=new Device(dev_name_cpy,mac,id,this);
+
+    Device *device = new Device(dev_name_cpy, mac, id, this);
     this->devices_list_.push_back(device);
     char mac_str[MAC_STR_LEN];
     ip_addr_t next_hop;
-    next_hop.s_addr=0;
-    this->arpInsert(device->getDeviceIP(),std::string(mac_to_str(mac,mac_str)));
+    next_hop.s_addr = 0;
+    this->arpInsert(device->getDeviceIP(), std::string(mac_to_str(mac, mac_str)));
     this->route_table.set_route_item(device->getDeviceIP(),
-                                        device->getDeviceSubnetMask(),
-                                        next_hop,
-                                        0);
+                                     device->getDeviceSubnetMask(),
+                                     next_hop,
+                                     0);
     free(mac);
 
-    if(this->route_thread==nullptr)
+    if (this->route_thread == nullptr)
     {
-        this->route_thread = new std::thread(&DeviceManager::routeTableUpdate, this);
         this->is_run.store(true);
+        this->route_thread = new std::thread(&DeviceManager::routeTableUpdate, this);
         this->route_thread->detach();
     }
     this->manager_mutex.unlock();
@@ -417,18 +415,18 @@ FOUND:
 Device *DeviceManager::findDevice(const char *dev_name)
 {
     this->manager_mutex.lock_shared();
-    dev_id n_devices=this->devices_list_.size();
-    for(dev_id i=0;i<n_devices;++i)
+    dev_id n_devices = this->devices_list_.size();
+    for (dev_id i = 0; i < n_devices; ++i)
     {
-        if(strcmp(devices_list_[i]->getDeviceName(),dev_name)==0)
+        if (strcmp(devices_list_[i]->getDeviceName(), dev_name) == 0)
         {
-            int id=devices_list_[i]->getDeviceID();
+            int id = devices_list_[i]->getDeviceID();
             dbg_printf("[INFO][Device::findDevice()] "
-                       "Device %s found with id %d.\n", 
-            dev_name, 
-            id);
+                       "Device %s found with id %d.\n",
+                       dev_name,
+                       id);
             this->manager_mutex.unlock_shared();
-            return  devices_list_[i];
+            return devices_list_[i];
         }
     }
     dbg_printf("[ERROR][Device::findDevice()] "
@@ -444,20 +442,20 @@ Device *DeviceManager::getDeviceByIPPrefix(ip_addr_t ip)
     dev_id n_devices = this->devices_list_.size();
     char ip_str[IP_STR_LEN];
     ip_addr_t max_subnet;
-    max_subnet.s_addr=0;
-    int id=-1;
+    max_subnet.s_addr = 0;
+    int id = -1;
     for (dev_id i = 0; i < n_devices; ++i)
     {
-        if (in_same_subnet(ip,devices_list_[i]->getDeviceIP(),devices_list_[i]->getDeviceSubnetMask()))
+        if (in_same_subnet(ip, devices_list_[i]->getDeviceIP(), devices_list_[i]->getDeviceSubnetMask()))
         {
-            if(devices_list_[i]->getDeviceSubnetMask().s_addr>max_subnet.s_addr)
+            if (devices_list_[i]->getDeviceSubnetMask().s_addr > max_subnet.s_addr)
             {
-                max_subnet.s_addr=devices_list_[i]->getDeviceSubnetMask().s_addr;
-                id=i;
+                max_subnet.s_addr = devices_list_[i]->getDeviceSubnetMask().s_addr;
+                id = i;
             }
         }
     }
-    if(id!=-1)
+    if (id != -1)
     {
         const char *dev_name = devices_list_[id]->getDeviceName();
         dbg_printf("[INFO][Device::getDeviceByIPPrefix(ip)] "
@@ -482,7 +480,7 @@ Device *DeviceManager::getDeviceByIP(ip_addr_t ip)
     char ip_str[IP_STR_LEN];
     for (dev_id i = 0; i < n_devices; ++i)
     {
-        if (devices_list_[i]->getDeviceIP().s_addr==ip.s_addr)
+        if (devices_list_[i]->getDeviceIP().s_addr == ip.s_addr)
         {
             int id = devices_list_[i]->getDeviceID();
             const char *dev_name = devices_list_[i]->getDeviceName();
@@ -510,7 +508,7 @@ Device *DeviceManager::getDeviceByIP(ip_addr_t ip)
  * was found .
  *
 Device *DeviceManager::findDevice(dev_id id)
-{   
+{
     this->manager_mutex.lock_shared();
     if(id<0 || id>=this->devices_list_.size())
     {
@@ -527,9 +525,9 @@ Device *DeviceManager::findDevice(dev_id id)
 
 Device *DeviceManager::getDevice(dev_id id)
 {
-    if(id<0 || id>=this->devices_list_.size())
+    if (id < 0 || id >= this->devices_list_.size())
     {
-        dbg_printf("[ERROR][DeviceManager::getDevice()] Invalid device ID: %d.\n",id);
+        dbg_printf("[ERROR][DeviceManager::getDevice()] Invalid device ID: %d.\n", id);
         return nullptr;
     }
     return this->devices_list_[id];
@@ -539,9 +537,9 @@ void DeviceManager::printAllValidDevice() const
 {
     pcap_if_t *devs;
     char ebuf[PCAP_ERRBUF_SIZE];
-    int ret=pcap_findalldevs(&devs,ebuf);
+    int ret = pcap_findalldevs(&devs, ebuf);
     printf("All valid devices below: \n");
-    for(auto *p=devs;p;p=p->next)
+    for (auto *p = devs; p; p = p->next)
     {
         printf("device %s: %s\n", p->name, p->description);
         for (auto *a = p->addresses; a; a = a->next)
@@ -558,12 +556,12 @@ void DeviceManager::printAllValidDevice() const
             }
         }
         IP_Info info = get_ip_addr_at_host(p->name);
-        if(info.found==true)
+        if (info.found == true)
         {
             printf("\tinet: ");
             char ip_str[IP_STR_LEN];
-            ip_addr_to_str(info.ip,ip_str);
-            printf("%s\n",ip_str);
+            ip_addr_to_str(info.ip, ip_str);
+            printf("%s\n", ip_str);
             char netmask_str[IP_STR_LEN];
             ip_addr_to_str(info.netmask, netmask_str);
             printf("\tnetmask: ");
@@ -575,26 +573,26 @@ void DeviceManager::printAllValidDevice() const
 
 void DeviceManager::printAllAddedDevice() const
 {
-    int n_devices=this->devices_list_.size();
-    if(n_devices!=0)
+    int n_devices = this->devices_list_.size();
+    if (n_devices != 0)
         printf("All added devices below: \n");
     else
         printf("No device added.\n");
-    for(int i=0;i<n_devices;++i)
+    for (int i = 0; i < n_devices; ++i)
     {
-        Device *dev=this->devices_list_[i];
-        dev_id id=dev->getDeviceID();
-        const char *name=dev->getDeviceName();
-        const u_char *mac=dev->getDeviceMac();
+        Device *dev = this->devices_list_[i];
+        dev_id id = dev->getDeviceID();
+        const char *name = dev->getDeviceName();
+        const u_char *mac = dev->getDeviceMac();
         char mac_str[MAC_STR_LEN];
         char ip_str[IP_STR_LEN];
         char netmask_str[IP_STR_LEN];
         printf("device %d %s: \n\tether %s\n\tinet: %s\n\tnetmask: %s\n",
-                id,
-                name,
-                mac_to_str(mac,mac_str),
-                ip_addr_to_str(dev->getDeviceIP(),ip_str),
-                ip_addr_to_str(dev->getDeviceSubnetMask(),netmask_str));
+               id,
+               name,
+               mac_to_str(mac, mac_str),
+               ip_addr_to_str(dev->getDeviceIP(), ip_str),
+               ip_addr_to_str(dev->getDeviceSubnetMask(), netmask_str));
     }
 }
 
@@ -602,12 +600,12 @@ void DeviceManager::printARPCache() const
 {
     printf("[INFO][DeviceManager::printARPCache()]\n");
     printbars(67);
-    printf("| %-30s | %-30s |\n","IP","MAC");
+    printf("| %-30s | %-30s |\n", "IP", "MAC");
     printbars(67);
-    for(auto arp_entry:this->arp_cache)
+    for (auto arp_entry : this->arp_cache)
     {
         char ip_str[IP_STR_LEN];
-        ip_addr_to_str(arp_entry.first,ip_str);
+        ip_addr_to_str(arp_entry.first, ip_str);
         printf("| %-30s | %-30s |\n", ip_str, arp_entry.second.c_str());
         printbars(67);
     }
@@ -615,9 +613,9 @@ void DeviceManager::printARPCache() const
 
 void DeviceManager::printRouteTable(int verbose)
 {
-    if(verbose==STDOUT_FILENO)
+    if (verbose == STDOUT_FILENO)
         printf("[INFO][DeviceManager::printRouteTable()]\n");
-    else if(verbose==STDERR_FILENO)
+    else if (verbose == STDERR_FILENO)
         dbg_printf("[INFO][DeviceManager::printRouteTable()]\n");
     this->route_table.printRouteTable(verbose);
 }
@@ -626,17 +624,16 @@ std::string DeviceManager::arpQueryMac(ip_addr_t ip)
 {
     char ip_str[IP_STR_LEN];
     ip_addr_to_str(ip, ip_str);
-    //this->arp_cache_mutex.lock_shared();
-    if(this->arp_cache.find(ip)!=this->arp_cache.end())
+    // this->arp_cache_mutex.lock_shared();
+    if (this->arp_cache.find(ip) != this->arp_cache.end())
     {
-        std::string mac=this->arp_cache.at(ip);
+        std::string mac = this->arp_cache.at(ip);
         dbg_printf("[INFO][DeviceManager::arpQueryMac()] "
                    "Successfully query IP %s at arp_cache, "
                    "return MAC %s.\n",
                    ip_str,
-                   mac.c_str()
-                   );
-        //this->arp_cache_mutex.unlock_shared();
+                   mac.c_str());
+        // this->arp_cache_mutex.unlock_shared();
         return mac;
     }
     else
@@ -644,19 +641,19 @@ std::string DeviceManager::arpQueryMac(ip_addr_t ip)
         dbg_printf("[ERROR][DeviceManager::arpQueryMac()] "
                    "IP %s is not at arp_cache. I will send an ARP request.\n",
                    ip_str);
-        for(auto dev:this->devices_list_)
-            sendARPRequest(dev,ip);
-        int timer=0;
-        while(true)
+        for (auto dev : this->devices_list_)
+            sendARPRequest(dev, ip);
+        int timer = 0;
+        while (true)
         {
             sleep(1);
-            timer+=1;
-            if(timer>=ARP_WAIT_TIME)
+            timer += 1;
+            if (timer >= ARP_WAIT_TIME)
                 throw "ARP_OUT_OF_TIME";
-            if(this->arp_cache.find(ip)!=this->arp_cache.end())
+            if (this->arp_cache.find(ip) != this->arp_cache.end())
             {
-                std::string mac=this->arp_cache.at(ip);
-                //this->arp_cache_mutex.unlock_shared();
+                std::string mac = this->arp_cache.at(ip);
+                // this->arp_cache_mutex.unlock_shared();
                 return mac;
             }
         }
@@ -682,39 +679,39 @@ int DeviceManager::arpInsert(ip_addr_t ip, std::string mac)
                    "Insert entry with IP %s and MAC %s in the arp_cache.\n",
                    ip_str,
                    mac.c_str());
-        this->arp_cache[ip]=mac;
+        this->arp_cache[ip] = mac;
         this->arp_cache_mutex.unlock();
-        //this->printARPCache();
+        // this->printARPCache();
         return 0;
     }
 }
 
-int DeviceManager::arpDelete(ip_addr_t ip,ip_addr_t netmask)
+int DeviceManager::arpDelete(ip_addr_t ip, ip_addr_t netmask)
 {
     char ip_str[IP_STR_LEN];
-    //this->arp_cache_mutex.lock();
-    bool found=false;
-    for(auto entry: this->arp_cache)
+    // this->arp_cache_mutex.lock();
+    bool found = false;
+    for (auto entry : this->arp_cache)
     {
-        if(in_same_subnet(ip,entry.first,netmask))
+        if (in_same_subnet(ip, entry.first, netmask))
         {
-            if(this->getDeviceByIP(entry.first)==nullptr)
+            if (this->getDeviceByIP(entry.first) == nullptr)
             {
-                found=true;
+                found = true;
                 dbg_printf("[INFO][DeviceManager::arpDelete()] "
                            "Delete entry with IP %s in the arp_cache.\n",
                            ip_addr_to_str(entry.first, ip_str));
                 this->arp_cache.erase(ip);
-                //this->arp_cache_mutex.unlock();
+                // this->arp_cache_mutex.unlock();
             }
         }
     }
-    if(found)
+    if (found)
     {
         dbg_printf("[ERROR][DeviceManager::arpDelete()] "
                    "IP %s is not in arp_cache.\n",
                    ip_str);
-        //this->arp_cache_mutex.unlock();
+        // this->arp_cache_mutex.unlock();
         return -1;
     }
     return 0;
@@ -723,12 +720,7 @@ int DeviceManager::arpDelete(ip_addr_t ip,ip_addr_t netmask)
 void deviceRecvPcapHandler(u_char *args, const pcap_pkthdr *head, const u_char *packet)
 {
     Device *dev = reinterpret_cast<Device *>(args);
-    if (dev->receive_call_back_ != nullptr)
-    {
-        if (dev->receive_call_back_(packet, head->caplen, dev->id_) == -1)
-            pcap_breakloop(dev->handle_);
-    }
-    if(dev->is_run.load()==false)
+    if (dev->is_run.load() == false)
     {
         pcap_breakloop(dev->handle_);
         return;
@@ -746,11 +738,11 @@ void deviceRecvPcapHandler(u_char *args, const pcap_pkthdr *head, const u_char *
     memcpy(payload, packet + ETHER_HDR_LEN, payload_len);
 
     char src_mac_str[MAC_STR_LEN];
-    std::string src_mac_str_=mac_to_str(src_mac,src_mac_str);
+    std::string src_mac_str_ = mac_to_str(src_mac, src_mac_str);
     char dst_mac_str[MAC_STR_LEN];
     std::string dst_mac_str_ = mac_to_str(dst_mac, dst_mac_str);
     char dev_mac_str[MAC_STR_LEN];
-    std::string dev_mac_str_=mac_to_str(dev->getDeviceMac(),dev_mac_str);
+    std::string dev_mac_str_ = mac_to_str(dev->getDeviceMac(), dev_mac_str);
     void *broad_cast_mac = malloc(ETHER_ADDR_LEN);
     memset(broad_cast_mac, 0xff, ETHER_ADDR_LEN);
 
@@ -761,38 +753,44 @@ void deviceRecvPcapHandler(u_char *args, const pcap_pkthdr *head, const u_char *
                src_mac_str,
                dst_mac_str,
                ethtype);
+
     if (head->caplen != head->len)
     {
         dbg_printf("[ERROR][deviceRecvPcapHandler()] Packet loss something.\n");
         return;
     }
-    if(src_mac_str_==dev_mac_str_ )
+    if (src_mac_str_ == dev_mac_str_)
     {
         dbg_printf("[INFO] The frame is from itself, drop it.\n");
         return;
     }
-    bool is_match_dst_mac=(memcmp((void *)dst_mac,broad_cast_mac,ETHER_ADDR_LEN)==0)
-                        ||(dst_mac_str_==dev_mac_str_);
-    if(!is_match_dst_mac)
+    bool is_match_dst_mac = (memcmp((void *)dst_mac, broad_cast_mac, ETHER_ADDR_LEN) == 0) || (dst_mac_str_ == dev_mac_str_);
+    if (!is_match_dst_mac)
     {
         dbg_printf("[INFO] The frame's destination dosn't match, drop it.\n");
         return;
     }
 
-    if(ethtype==ETHERTYPE_ARP)
+    if (dev->receive_call_back_ != nullptr)
+    {
+        if (dev->receive_call_back_(packet, head->caplen, dev->id_) == -1)
+            pcap_breakloop(dev->handle_);
+    }
+
+    if (ethtype == ETHERTYPE_ARP)
     {
         ARP_CONTENT content;
-        memcpy(&content,payload,sizeof(content));
+        memcpy(&content, payload, sizeof(content));
         content.ARPntohs();
-        if(content.hdr.ar_op==ARPOP_REQUEST)
+        if (content.hdr.ar_op == ARPOP_REQUEST)
         {
             dbg_printf("[INFO] The frame is ARP request packet.\n");
-            handleARPRequest(dev,&content);
+            handleARPRequest(dev, &content);
         }
-        else if(content.hdr.ar_op==ARPOP_REPLY)
+        else if (content.hdr.ar_op == ARPOP_REPLY)
         {
             dbg_printf("[INFO] The frame is ARP reply packet.\n");
-            handleARPReply(dev,&content);
+            handleARPReply(dev, &content);
         }
         else
         {
@@ -800,41 +798,42 @@ void deviceRecvPcapHandler(u_char *args, const pcap_pkthdr *head, const u_char *
             return;
         }
     }
-    else if(ethtype==MY_RIP_PROTO)
+    else if (ethtype == MY_RIP_PROTO)
     {
-        struct RIPHead *hdr=(struct RIPHead *)malloc(RIP_HDR_SIZE);
-        memcpy(hdr,payload,RIP_HDR_SIZE);
-        if(hdr->version==MY_RIP_VERSION)
+        struct RIPHead *hdr = (struct RIPHead *)malloc(RIP_HDR_SIZE);
+        memcpy(hdr, payload, RIP_HDR_SIZE);
+        if (hdr->version == MY_RIP_VERSION)
         {
-            if(hdr->command==RIP_REQUEST_CMD)
+            if (hdr->command == RIP_REQUEST_CMD)
             {
                 dbg_printf("[INFO] The frame is RIP request packet.\n");
-                handleRIPRequest(dev->manager_,dev,payload,payload_len);
+                handleRIPRequest(dev->manager_, dev, payload, payload_len);
             }
-            else if(hdr->command==RIP_REPLY_CMD)
+            else if (hdr->command == RIP_REPLY_CMD)
             {
                 dbg_printf("[INFO] The frame is RIP response packet.\n");
-                handleRIPReply(dev->manager_,dev,payload,payload_len);
+                handleRIPReply(dev->manager_, dev, payload, payload_len);
             }
         }
         free(hdr);
     }
-    else if(ethtype=ETHERTYPE_IP)
+    else if (ethtype = ETHERTYPE_IP)
     {
-        handleIPPacket(dev->manager_,dev,payload,payload_len);
+        handleIPPacket(dev->manager_, dev, payload, payload_len);
     }
+
     free(payload);
 }
 void deviceRecvFrame(Device *dev)
 {
-    if(dev->handle_==nullptr)
+    if (dev->handle_ == nullptr)
     {
         dbg_printf("[ERROR][deviceRecvFrame()] The handle of device is invalid.\n");
         return;
     }
-    
-    int ret=pcap_loop(dev->handle_,-1,deviceRecvPcapHandler,(u_char *)dev);
-    if(ret==-1)
+
+    int ret = pcap_loop(dev->handle_, -1, deviceRecvPcapHandler, (u_char *)dev);
+    if (ret == -1)
     {
         dbg_printf("[ERROR][deviceRecvFrame()] pcap_loop error.\n");
         return;
