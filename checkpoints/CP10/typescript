@@ -1,0 +1,91 @@
+Script started on 2023-11-16 18:39:17+08:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="86" LINES="20"]
++ rm -r ./log
++ mkdir ./log
++ cd ../../build
++ cmake .. -DTEST_TCP_DEBUG=on -DTEST_IP_ETHER_DEBUG=off
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/compnet/lab/build
++ make
+[35m[1mConsolidate compiler generated dependencies of target lab-netstack[0m
+[ 31%] Built target lab-netstack
+[35m[1mConsolidate compiler generated dependencies of target lab-netstack-socket[0m
+[ 37%] Built target lab-netstack-socket
+[35m[1mConsolidate compiler generated dependencies of target test_device_manager[0m
+[ 43%] Built target test_device_manager
+[35m[1mConsolidate compiler generated dependencies of target set_receiver[0m
+[ 50%] Built target set_receiver
+[35m[1mConsolidate compiler generated dependencies of target set_sender[0m
+[ 56%] Built target set_sender
+[35m[1mConsolidate compiler generated dependencies of target host_manager[0m
+[ 62%] Built target host_manager
+[35m[1mConsolidate compiler generated dependencies of target server[0m
+[ 68%] Built target server
+[35m[1mConsolidate compiler generated dependencies of target client[0m
+[ 75%] Built target client
+[35m[1mConsolidate compiler generated dependencies of target echo_client[0m
+[ 81%] Built target echo_client
+[35m[1mConsolidate compiler generated dependencies of target echo_server[0m
+[ 87%] Built target echo_server
+[35m[1mConsolidate compiler generated dependencies of target perf_client[0m
+[ 93%] Built target perf_client
+[35m[1mConsolidate compiler generated dependencies of target perf_server[0m
+[100%] Built target perf_server
++ cd ../vnetUtils/helper
++ sudo ./addNS ns1
++ sudo ./addNS ns2
++ sudo ./addNS ns3
++ sudo ./addNS ns4
++ sudo ./connectNS ns1 ns2 veth1-2 veth2-1 10.100.1
++ sudo ./connectNS ns2 ns3 veth2-3 veth3-2 10.100.2
++ sudo ./connectNS ns3 ns4 veth3-4 veth4-3 10.100.3
++ sudo ./execNS ns1 sudo ./bypassKernel
++ sudo ./execNS ns2 sudo ./bypassKernel
++ sudo ./execNS ns3 sudo ./bypassKernel
++ sudo ./execNS ns4 sudo ./bypassKernel
++ sudo ./execNS ns4 sudo ../../build/tests/tcp/perf_client 10.100.1.1
++ sudo ./execNS ns2 ../../build/tests/ip/host_manager ../../checkpoints/CP10/setup.action
++ sudo ./execNS ns3 ../../build/tests/ip/host_manager ../../checkpoints/CP10/setup.action
++ sudo ./execNS ns1 sudo ../../build/tests/tcp/perf_server
+All added devices below: 
+device 0 veth1-2: 
+	ether 66:82:0f:5a:9d:ad
+	inet: 10.100.1.1
+	netmask: 255.255.255.0
+sending ...
+receiving ...
+new connection
+24.30 KB/s
+sending ...
+receiving ...
+24.30 KB/s
+sending ...
+receiving ...
+24.28 KB/s
+sending ...
+receiving ...
+29.16 KB/s
+sending ...
+receiving ...
+20.84 KB/s
+sending ...
+receiving ...
+24.31 KB/s
+sending ...
+receiving ...
+24.31 KB/s
+sending ...
+receiving ...
+24.27 KB/s
+sending ...
+receiving ...
+24.31 KB/s
+sending ...
+receiving ...
+29.16 KB/s
++ sudo ./delNS ns1
++ sudo ./delNS ns2
++ sudo ./delNS ns3
++ sudo ./delNS ns4
+
+Script done on 2023-11-16 18:40:37+08:00 [COMMAND_EXIT_CODE="0"]

@@ -27,4 +27,7 @@ struct ipcmp
 {
     bool operator()(const ip_addr_t ip1, const ip_addr_t ip2) const;
 };
+
+
+
 #endif

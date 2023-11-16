@@ -4,7 +4,6 @@
 #include <mutex>
 
 std::shared_timed_mutex mt_cnt;
-DeviceManager m;
 Device *dev;
 int cnt=0;
 
@@ -23,7 +22,7 @@ int recvFrameCallback_new(const void *frame, int len, dev_id id)
     u_char *payload = (u_char *)malloc(payload_len+1);
     memset(payload,0,payload_len+1);
     memcpy(payload, frame_ + ETHER_HDR_LEN, payload_len);
-    const char *name = m.getDevice(id)->getDeviceName();
+    const char *name = getDevice(id)->getDeviceName();
     mt_cnt.lock();
     cnt++;
     mt_cnt.unlock();
@@ -54,13 +53,13 @@ int main(int argc, char **argv)
     }
     char *dev_name=argv[1];
     int recv_num=atoi(argv[2]);
-    dev_id id=m.addDevice(dev_name);
+    dev_id id=addDevice(dev_name);
     if(id==-1)
     {
         printf("[ERROR] %s: The device is invalid", argv[0]);
         return -1;
     }
-    dev=m.getDevice(id);
+    dev=getDevice(id);
     printf("[INFO] Device %s ready to receive %d frames.\n",dev_name,recv_num);
     dev->setFrameReceiveCallback(recvFrameCallback_new);
     while(true)

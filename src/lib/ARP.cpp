@@ -14,18 +14,14 @@ ARP_CONTENT::ARP_CONTENT()
 void ARP_CONTENT::ARPhtons()
 {
     hdr.ar_op = htons(hdr.ar_op);
-    hdr.ar_hln = htons(hdr.ar_hln);
     hdr.ar_hrd = htons(hdr.ar_hrd);
-    hdr.ar_pln = htons(hdr.ar_pln);
     hdr.ar_pro = htons(hdr.ar_pro);
 }
 
 void ARP_CONTENT::ARPntohs()
 {
     hdr.ar_op = ntohs(hdr.ar_op);
-    hdr.ar_hln = ntohs(hdr.ar_hln);
     hdr.ar_hrd = ntohs(hdr.ar_hrd);
-    hdr.ar_pln = ntohs(hdr.ar_pln);
     hdr.ar_pro = ntohs(hdr.ar_pro);
 }
 

@@ -6,11 +6,11 @@
 
 ### 1.1 Writing Task 1(WT1)
 
-> Open trace.pcap with Wireshark. First set filter to eth.src == 6a:15:0a:ba:9b:7c to only reserve Ethernet frames with source address 6a:15:0a:ba:9b:7c. Find the third frame in the filtered results and answer the following questions.
+> Open `trace.pcap` with Wireshark. First set filter to `eth.src == 6a:15:0a:ba:9b:7c` to only reserve Ethernet frames with source address `6a:15:0a:ba:9b:7c`. Find the third frame in the filtered results and answer the following questions.
 >
 > 1. How many frames are there in the filtered results? (Hint: see the status bar)
 > 2. What is the destination address of this Ethernet frame and what makes this address special?
-> 3. What is the 71th byte (count from 0) of this frame?
+> 3. What is the `71th` byte (count from 0) of this frame?
 
 The third frame in the filtered results is:
 
@@ -19,7 +19,7 @@ The third frame in the filtered results is:
 | 12  | 1.068164 | 0.0.0.0 | 255.255.255.255 | DHCP     | 342    | DHCP Discover - Transaction ID 0x13699715 |
 
 1. There are 827 frames in the filtered results.
-2. ff:ff:ff:ff:ff:ff, the broadcast address.
+2. `ff:ff:ff:ff:ff:ff`, the broadcast address.
 
    > Frames are addressed to reach every computer on a given LAN segment if they are addressed to MAC address FF:FF:FF:FF:FF:FF. Ethernet frames that contain IP broadcast packages are usually sent to this address.
    > *__by Wikipedia__*
@@ -76,7 +76,7 @@ For Checkpoint 1 (CP1), the implementation code is located in `checkpoints/CP1/{
 
 For Checkpoint 2 (CP2), the implementation code is located in `checkpoints/CP2/cp2.sh`, `src/tests/ethernet/{set_sender and set_receiver}.cpp`. The main idea is to establish a network based on `vnetUtils/examples` and enable multiple rounds of communication between connected devices, while recording their output.
 
-1. `set_sender <dev> <dst_mac> <send_num>`: This sets up the sender. Each parameter represents the device name for sending, the destination MAC address, and the number of messages to send. After running this program, the device `dev` will send `send_num` rounds of frames to `dst_mac`, where each round of sending has a different payload. The payload looks like "Hello! This is message 10 from device veth0-3 with mac 7a:85:90:d4:1b:cc." for easy calibration, identification, and verification. It also outputs relevant information during the sending process, such as:
+1. `set_sender <dev> <dst_mac> <send_num>`: This sets up the sender. Each parameter represents the device name for sending, the destination MAC address, and the number of messages to send. After running this program, the device `dev` will send `send_num` rounds of frames to `dst_mac`, where each round of sending has a different payload. The payload looks like __"Hello! This is message 10 from device veth0-3 with mac 7a:85:90:d4:1b:cc."__ for easy calibration, identification, and verification. It also outputs relevant information during the sending process, such as:
 
    ```log
    [INFO] Device veth3-0 send frame 1:
@@ -142,7 +142,7 @@ For Checkpoint 2 (CP2), the implementation code is located in `checkpoints/CP2/c
 
 ### 2.1 Writing Task 2(WT2)
 
-> Open trace.pcap with Wireshark. Answer the following questions.
+> Open `trace.pcap` with Wireshark. Answer the following questions.
 >
 > 1. During an ARP interaction, which field in ARP Reply is the same as the Sender MAC address in ARP Request?
 > 2. How many IPv4 packets are there whose Don’t fragment bit is not set?
@@ -215,7 +215,7 @@ This implementation effectively prevents loops and allows the host to quickly de
 
 ### 2.5 Checkpoint 3(CP3)
 
-I implemented this task in `checkpoints/CP3`. You can obtain the results by running `./cp3.sh`. The `typescript` and `./log` files contain the execution logs, and `/action` records the behavior of various hosts. Captured IPv4 packets are stored in `ip_example.pcap`, and the specific hexdump is as follows:
+I implemented this task in `checkpoints/CP3`. You can obtain the results by running `./cp3.sh`. The `typescript` and `./log` files contain the execution logs, and `./action` records the behavior of various hosts. Captured IPv4 packets are stored in `ip_example.pcap`, and the specific hexdump is as follows:
 
 ```vim
 0000   56 fb 21 64 a4 94 c2 47 71 fa 54 1d 08 00 45 00   V.!d...Gq.T...E.
@@ -236,7 +236,7 @@ I implemented this task in `checkpoints/CP3`. You can obtain the results by runn
 - Identification: `0x0000`
 - Flags: `0b010`; Fragment Offset:`0b0 0000 0000 0000`
 - Time to Live: `0x10`
-- Protocal: `0xfd`, protocal preserved for test.
+- Protocol: `0xfd`, protocol preserved for test.
 - Header Checksum: `0xf744`
 - Source IP Address: `0x0a640102`->`10.100.1.2`
 - Destination IP Address: `0x0a640101`->`10.100.1.1`
@@ -244,7 +244,7 @@ I implemented this task in `checkpoints/CP3`. You can obtain the results by runn
 
 ### 2.6 Checkpoint 4(CP4)
 
-I implemented this task in `checkpoints/CP4`. You can obtain the results by running `./cp4.sh`. The `typescript` and `./log` files contain the execution logs, and `/action` records the behavior of various hosts. `./log/*cli.log` include the result of the program. `./log/*trace.log` record the program running trace(more detail).
+I implemented this task in `checkpoints/CP4`. You can obtain the results by running `./cp4.sh`. The `typescript` and `./log` files contain the execution logs, and `./action` records the behavior of various hosts. `./log/*cli.log` include the result of the program. `./log/*trace.log` record the program running trace(more detail).
 
 In this task, I constructed the required network topology as follows:
 
@@ -264,7 +264,7 @@ This sequence of actions demonstrated the proper functioning of the network topo
 
 ### 2.7 Checkpoints 5(CP5)
 
-I implemented this task in checkpoints/CP5. You can obtain the results by running ./cp5.sh. The typescript and ./log files contain the execution logs, and /action records the behavior of various hosts.
+I implemented this task in `checkpoints/CP5`. You can obtain the results by running `./cp5.sh`. The typescript and `./log` files contain the execution logs, and `./action` records the behavior of various hosts.
 
 In this task, I constructed the requested network topology:
 
@@ -388,14 +388,195 @@ ns1 --- ns2 --- ns3
 
 Where:
 
-- veth1-2: 192.24.0.1/19
-- veth2-1: 192.24.0.2/19
-- veth2-3: 192.24.16.1/20
-- veth3-2: 192.24.16.2/20
-- veth2-4: 192.24.8.1/22
-- veth4-2: 192.24.8.2/22
+- `veth1-2`: 192.24.0.1/19
+- `veth2-1`: 192.24.0.2/19
+- `veth2-3`: 192.24.16.1/20
+- `veth3-2`: 192.24.16.2/20
+- `veth2-4`: 192.24.8.1/22
+- `veth4-2`: 192.24.8.2/22
 
-When sending an IP packet from 192.24.0.1/19 to 192.24.8.2, according to longest prefix matching, it should be received by veth4-2, not veth2-1. After verification, it indeed behaves as expected.
+When sending an IP packet from 192.24.0.1/19 to 192.24.8.2, according to longest prefix matching, it should be received by `veth4-2`, not `veth2-1`. After verification, it indeed behaves as expected.
+
+## 3 Lab 3: Transport-layer
+
+> __HINTS:__ I did not implement __Hijack Library__. Instead, I simply moved the `checkpoint/unp.{h, cpp}` files to `src` and moved the `checkpoint/{echo_client, echo_server, perf_client, perf_server}.cpp` files to `src/tests/tcp`. I replaced all standard BSD Socket interfaces with wrapped versions (i.e., calling the wrapped BSD Socket as ordinary functions). Then, I compiled them into  executable files. __Other than these changes, I did not modify any program content. The execution result should be equivalent to using Hijack Library__.
+
+### 3.1 Writing Task 5(WT5)
+
+> Open `trace.pcap` with Wireshark. Answer the following questions.
+>
+> 1. How many TCP sessions are included in `trace.pcap`? How many segments are included in each session?(Hint: ”Statistics” button in the menu bar may help you)
+> 2. We use a four-element tuple `⟨srcIP, srcport, desIP, desport⟩` to identify a TCP connection. Please list the tuples of each TCP connection in trace.pcap.
+> 3. What is the TCP receive window size in packet No. 86? How is this value calculated?
+
+1. 2
+2. (10.0.0.74, 43120, 115.27.207.221, 80) and (10.0.0.74, 43122, 115.27.207.221, 80)
+3. 85 x 2^9 = 43520; Packet No.86 TCP.WND = 85, Packet No.72(SYN segment) last TCP option(Shift Count) = 9
+
+### 3.2 Programming Task 4(PT4)
+
+I have implemented the TCP protocol and the BSD Socket interface in the files `TCP.h`, `TCP.cpp`, `socket.h`, and `socket.cpp`.
+
+In `TCP.h` and `TCP.cpp`, I have implemented the TCP Control Block (TCB), listening socket, and TCP Packet data structures. Additionally, I have implemented TCP callback functions to handle the TCP state machine transitions upon receiving TCP packets.
+
+In `device.h` and `device.cpp`, I added socket queues and listening socket queues to manage them uniformly within a single process.
+
+In `socket.h` and `socket.cpp`, I implemented the basic BSD Socket functions, thereby completing the entire TCP state machine.
+
+The specific implementation follows the __RFC 793__ documentation, although it does not include features related to priority management or the urgent data pointer.
+
+### 3.3 Checkpoint 7(CP7)
+
+In this task, I constructed the following network topology:
+
+```txt
+ns1 --- ns2
+```
+
+I ran the `src/tests/server` on ns1 and the `src/tests/client` on ns2, establishing a connection between the client and server. Subsequently, the client sent information to the server.
+
+The client's output is as follows:
+
+```txt
+New conection 4.
+Send ABC to client.
+Read ABC from server.
+Close client.
+Close server.
+```
+
+I implemented this task in `checkpoints/CP7`. You can obtain the results by running `./cp7.sh`. The `typescript` and `./log` files contain the execution logs. I used `tcpdump` to capture the outgoing TCP packets from the client and saved them in the file named `capture.pcap`:
+
+```vim
+0000   b2 71 88 ea 5c 00 66 82 0f 5a 9d ad 08 00 45 00   .q..\.f..Z....E.
+0010   00 28 00 00 40 00 10 06 ee 6b 0a 64 01 01 0a 64   .(..@....k.d...d
+0020   01 02 66 27 04 01 6b 8b 45 67 6b 8b 45 68 50 12   ..f'..k.Egk.EhP.
+0030   ff ff 50 76 00 00 00 00 00 00                     ..Pv......
+```
+
+TCP Header:
+
+- Source Port: `0x6627`.
+- Destination Port: `0x0401`.
+- Sequence Number: `0x6b8b4567`.
+- Acknowledgment Number: `0x6b8b4568`.
+- Data Offset: `0x5`.
+- Flags: `0x012`, SYN and ACK set.
+- Window: `0xffff`.
+- Checksum: `0x5076`.
+- Urgent Pointer: `0x0000`.
+- Trailer Zeros.
+
+### 3.4 Checkpoint 8(CP 8)
+
+I implemented this task in `checkpoints/CP8`. You can obtain the results by running `./cp8.sh`. The `typescript` and `./log` files contain the execution logs. Captured TCP packets are stored in `capture.pcap`.
+
+In this task, I constructed the following network topology:
+
+```txt
+ns1 --- ns2
+```
+
+I ran the `echo_client` on ns1 and the `echo_server` on ns2, establishing a connection between them. I simulated a 20% packet loss rate using the following command:
+
+```bash
+sudo ./execNS ns1 sudo tc qdisc add dev veth1-2 root netem loss 20%
+sudo ./execNS ns2 sudo tc qdisc add dev veth2-1 root netem loss 20%
+```
+
+The program's output is as follows(recorded in `tyepscript`):
+
+```txt
+new connection
+6 12 13 14 63 68 70 72 74 76 78 80 82 84 86 87 88 89 1089 2089 3089 4089 4184 5184 6184 7184 8184 8279 9279 10279 11279 12279 12374 13374 14374 15000 all: 15000
+loop #1 ok.
+new connection
+6 12 13 14 63 68 70 72 74 76 78 80 82 84 86 87 88 89 1089 2089 3089 4089 4184 5184 6184 7184 8184 8279 9279 10279 11279 12279 12374 13374 14374 15000 all: 15000
+loop #2 ok.
+new connection
+6 12 13 14 63 68 70 72 74 76 78 80 82 84 86 87 88 89 1089 2089 3089 4089 4184 5184 6184 7184 8184 8279 9279 10279 11279 12279 12374 13374 14374 15000 all: 15000
+loop #3 ok.
+```
+
+I used `tcpdump` to capture the `echo_client`, and the screenshot is as follows(recorded in `capture.pacp`):
+
+![loss_pkt](./pictures/loss_pkt.png)
+
+It can be observed that I achieved reliable transmission in TCP by implementing a retransmission mechanism.
+
+### 3.5 Checkpoint 9(CP 9)
+
+In this task, I constructed the following network topology:
+
+```txt
+ns1 --- ns2 --- ns3 --- ns4
+```
+
+I implemented this task in `checkpoints/CP9`. You can obtain the results by running `./cp9.sh`. The `typescript` and `./log` files contain the execution logs, and `./action` records the behavior of `ns2` and `ns3`.
+
+In this task, I activated `ns2` and `ns3`. Then, I ran the `echo_server` on `ns4` and the `echo_client` on `ns1`, allowing `ns1` to send messages to `ns4`.
+
+The program output is recorded in the `typescript` as follows:
+
+```txt
+new connection
+6 12 13 14 63 68 70 72 74 76 78 80 82 84 86 87 88 89 1089 2089 3089 4089 4184 5184 6184 7184 8184 8279 9279 10279 11279 12279 12374 13374 14374 15000 all: 15000
+loop #1 ok.
+new connection
+6 12 13 14 63 68 70 72 74 76 78 80 82 84 86 87 88 89 1089 2089 3089 4089 4184 5184 6184 7184 8184 8279 9279 10279 11279 12279 12374 13374 14374 15000 all: 15000
+loop #2 ok.
+new connection
+6 12 13 14 63 68 70 72 74 76 78 80 82 84 86 87 88 89 1089 2089 3089 4089 4184 5184 6184 7184 8184 8279 9279 10279 11279 12279 12374 13374 14374 15000 all: 15000
+loop #3 ok.
+```
+
+### 3.6 Checkpoints 10(CP 10)
+
+In this task, I constructed the following network topology:
+
+```txt
+ns1 --- ns2 --- ns3 --- ns4
+```
+
+I implemented this task in `checkpoints/CP10`. You can obtain the results by running `./cp10.sh`. The `typescript` and `./log` files contain the execution logs, and `./action` records the behavior of `ns2` and `ns3`.
+
+In this task, I activated `ns2` and `ns3`. Then, I ran the `perf_server` on `ns4` and the `perf_client` on `ns1`, allowing `ns1` to send messages to `ns4`.
+
+The program output is recorded in the `typescript` as follows:
+
+```txt
+sending ...
+receiving ...
+new connection
+24.30 KB/s
+sending ...
+receiving ...
+24.30 KB/s
+sending ...
+receiving ...
+24.28 KB/s
+sending ...
+receiving ...
+29.16 KB/s
+sending ...
+receiving ...
+20.84 KB/s
+sending ...
+receiving ...
+24.31 KB/s
+sending ...
+receiving ...
+24.31 KB/s
+sending ...
+receiving ...
+24.27 KB/s
+sending ...
+receiving ...
+24.31 KB/s
+sending ...
+receiving ...
+29.16 KB/s
+```
 
 ## Appendix: Running Helper
 
@@ -403,12 +584,12 @@ To get everything running, you don't need to know all the details! You can simpl
 
 ```bash
 > bash ./run.sh
-Enter choice (CP{1-6}/HANDIN/MAKE/CLEAN):
+Enter choice (CP{1-10}/HANDIN/MAKE/CLEAN):
 ```
 
 Typically, you should start by entering "MAKE". This will build the executable files (located in the `build` directory).
 
-After that, you can choose either "CP1" to "CP6" and it will execute the relevant programs for Checkpoint 1 to Checkpoint 6, respectively, and record the running logs using `script`.
+After that, you can choose either "CP1" to "CP10" and it will execute the relevant programs for Checkpoint 1 to Checkpoint 10, respectively, and record the running logs using `script`.
 
 If you enter "HANDIN", you will get the compressed package ready for submission.
 

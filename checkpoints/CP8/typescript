@@ -1,0 +1,84 @@
+Script started on 2023-11-16 18:17:06+08:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="86" LINES="20"]
++ rm -r ./log
++ mkdir ./log
++ cd ../../build
++ cmake .. -DTEST_TCP_DEBUG=on -DTEST_IP_ETHER_DEBUG=off
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/compnet/lab/build
++ make
+[35m[1mConsolidate compiler generated dependencies of target lab-netstack[0m
+[  3%] [32mBuilding CXX object src/lib/CMakeFiles/lab-netstack.dir/socket.cpp.o[0m
+[  6%] [32m[1mLinking CXX static library ../../lib/liblab-netstack.a[0m
+[ 31%] Built target lab-netstack
+[35m[1mConsolidate compiler generated dependencies of target lab-netstack-socket[0m
+[ 34%] [32mBuilding CXX object src/lib/CMakeFiles/lab-netstack-socket.dir/socket.cpp.o[0m
+[ 37%] [32m[1mLinking CXX static library ../../lib/liblab-netstack-socket.a[0m
+[ 37%] Built target lab-netstack-socket
+[35m[1mConsolidate compiler generated dependencies of target test_device_manager[0m
+[ 40%] [32m[1mLinking CXX executable ../../../tests/ethernet/test_device_manager[0m
+[ 43%] Built target test_device_manager
+[35m[1mConsolidate compiler generated dependencies of target set_receiver[0m
+[ 46%] [32m[1mLinking CXX executable ../../../tests/ethernet/set_receiver[0m
+[ 50%] Built target set_receiver
+[35m[1mConsolidate compiler generated dependencies of target set_sender[0m
+[ 53%] [32m[1mLinking CXX executable ../../../tests/ethernet/set_sender[0m
+[ 56%] Built target set_sender
+[35m[1mConsolidate compiler generated dependencies of target host_manager[0m
+[ 59%] [32m[1mLinking CXX executable ../../../tests/ip/host_manager[0m
+[ 62%] Built target host_manager
+[35m[1mConsolidate compiler generated dependencies of target server[0m
+[ 65%] [32m[1mLinking CXX executable ../../../tests/tcp/server[0m
+[ 68%] Built target server
+[35m[1mConsolidate compiler generated dependencies of target client[0m
+[ 71%] [32m[1mLinking CXX executable ../../../tests/tcp/client[0m
+[ 75%] Built target client
+[35m[1mConsolidate compiler generated dependencies of target echo_client[0m
+[ 78%] [32m[1mLinking CXX executable ../../../tests/tcp/echo_client[0m
+[ 81%] Built target echo_client
+[35m[1mConsolidate compiler generated dependencies of target echo_server[0m
+[ 84%] [32m[1mLinking CXX executable ../../../tests/tcp/echo_server[0m
+[ 87%] Built target echo_server
+[35m[1mConsolidate compiler generated dependencies of target perf_client[0m
+[ 90%] [32m[1mLinking CXX executable ../../../tests/tcp/perf_client[0m
+[ 93%] Built target perf_client
+[35m[1mConsolidate compiler generated dependencies of target perf_server[0m
+[ 96%] [32m[1mLinking CXX executable ../../../tests/tcp/perf_server[0m
+[100%] Built target perf_server
++ cd ../vnetUtils/helper
++ sudo ./addNS ns1
++ sudo ./addNS ns2
++ sudo ./connectNS ns1 ns2 veth1-2 veth2-1 10.100.1
++ sudo ./execNS ns1 sudo ./bypassKernel
++ sudo ./execNS ns2 sudo ./bypassKernel
++ sudo ./execNS ns1 sudo tc qdisc add dev veth1-2 root netem loss 20%
++ sudo ./execNS ns2 sudo tc qdisc add dev veth2-1 root netem loss 20%
++ sleep 1
++ sudo ./execNS ns1 tcpdump -n -i veth1-2 -w ../../checkpoints/CP8/capture.pcap tcp
+tcpdump: listening on veth1-2, link-type EN10MB (Ethernet), snapshot length 262144 bytes
++ sudo ./execNS ns2 sudo ../../build/tests/tcp/echo_server
++ wait %2
++ sudo ./execNS ns1 sudo ../../build/tests/tcp/echo_client 10.100.1.2
+All added devices below: 
+device 0 veth2-1: 
+	ether b2:71:88:ea:5c:00
+	inet: 10.100.1.2
+	netmask: 255.255.255.0
+Socket operation on non-socket
+new connection
+6 12 13 14 63 68 70 72 74 76 78 80 82 84 86 87 88 89 1089 2089 3089 4089 4184 5184 6184 7184 8184 8279 9279 10279 11279 12279 12374 13374 14374 15000 all: 15000
+loop #1 ok.
+new connection
+6 12 13 14 63 68 70 72 74 76 78 80 82 84 86 87 88 89 1089 2089 3089 4089 4184 5184 6184 7184 8184 8279 9279 10279 11279 12279 12374 13374 14374 15000 all: 15000
+loop #2 ok.
+new connection
+6 12 13 14 63 68 70 72 74 76 78 80 82 84 86 87 88 89 1089 2089 3089 4089 4184 5184 6184 7184 8184 8279 9279 10279 11279 12279 12374 13374 14374 15000 all: 15000
+loop #3 ok.
++ sudo ./delNS ns1
++ sudo ./delNS ns2
++ exit
+766 packets captured
+767 packets received by filter
+0 packets dropped by kernel
+
+Script done on 2023-11-16 18:26:35+08:00 [COMMAND_EXIT_CODE="0"]

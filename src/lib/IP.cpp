@@ -166,6 +166,7 @@ int handleIPPacket(DeviceManager *manager, Device *dev, void *pkt, int len)
     if(ip_pkt.header->ip_dst.s_addr==dev->getDeviceIP().s_addr ||
        manager->getDeviceByIP(ip_pkt.header->ip_dst)!=nullptr)
     {
+        int ret1=0,ret2=0;
         dbg_printf("[INFO] Device %s with IP %s receive IP packet from IP %s.\n",
                     dev->getDeviceName(),
                     ip_dst_str,
@@ -173,9 +174,16 @@ int handleIPPacket(DeviceManager *manager, Device *dev, void *pkt, int len)
         if(manager->IPcallback==nullptr)
         {
             dbg_printf("[ERROR] The IP callback have not been set.\n");
-            return -1;
+            //return -1;
         }
-        return manager->IPcallback(pkt, len);
+        else
+            ret1=manager->IPcallback(pkt, len);
+        if(ip_pkt.header->ip_p==IPPROTO_TCP)
+           ret2=handleTCPPacket(dev,pkt,len);
+        if(ret1==0 && ret2==0)
+            return 0;
+        else
+            return -1;
     }
     ip_addr_t next_hop_ip=manager->route_table.query_next_hop(ip_pkt.header->ip_dst);
     if(next_hop_ip.s_addr==UINT32_MAX)

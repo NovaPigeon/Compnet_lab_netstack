@@ -1,0 +1,77 @@
+Script started on 2023-11-16 18:27:32+08:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="86" LINES="20"]
++ rm -r ./log
++ mkdir ./log
++ cd ../../build
++ cmake .. -DTEST_TCP_DEBUG=on -DTEST_IP_ETHER_DEBUG=off
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/compnet/lab/build
++ make
+[35m[1mConsolidate compiler generated dependencies of target lab-netstack[0m
+[ 31%] Built target lab-netstack
+[35m[1mConsolidate compiler generated dependencies of target lab-netstack-socket[0m
+[ 37%] Built target lab-netstack-socket
+[35m[1mConsolidate compiler generated dependencies of target test_device_manager[0m
+[ 43%] Built target test_device_manager
+[35m[1mConsolidate compiler generated dependencies of target set_receiver[0m
+[ 50%] Built target set_receiver
+[35m[1mConsolidate compiler generated dependencies of target set_sender[0m
+[ 56%] Built target set_sender
+[35m[1mConsolidate compiler generated dependencies of target host_manager[0m
+[ 62%] Built target host_manager
+[35m[1mConsolidate compiler generated dependencies of target server[0m
+[ 68%] Built target server
+[35m[1mConsolidate compiler generated dependencies of target client[0m
+[ 75%] Built target client
+[35m[1mConsolidate compiler generated dependencies of target echo_client[0m
+[ 81%] Built target echo_client
+[35m[1mConsolidate compiler generated dependencies of target echo_server[0m
+[ 87%] Built target echo_server
+[35m[1mConsolidate compiler generated dependencies of target perf_client[0m
+[ 93%] Built target perf_client
+[35m[1mConsolidate compiler generated dependencies of target perf_server[0m
+[100%] Built target perf_server
++ cd ../vnetUtils/helper
++ sudo ./addNS ns1
++ sudo ./addNS ns2
++ sudo ./connectNS ns1 ns2 veth1-2 veth2-1 10.100.1
++ sudo ./execNS ns1 sudo ./bypassKernel
++ sudo ./execNS ns2 sudo ./bypassKernel
++ sleep 1
++ sudo ./execNS ns1 tcpdump -n -c 1 -i veth1-2 -Q out -w ../../checkpoints/CP7/capture.pcap tcp
+tcpdump: listening on veth1-2, link-type EN10MB (Ethernet), snapshot length 262144 bytes
++ sudo ./execNS ns2 sudo ../../build/tests/tcp/server
++ wait
++ sudo ./execNS ns1 sudo ../../build/tests/tcp/client
+Set up the Host.
+Set up the Host.
+All added devices below: 
+device 0 veth1-2: 
+	ether 66:82:0f:5a:9d:ad
+	inet: 10.100.1.1
+	netmask: 255.255.255.0
+All added devices below: 
+device 0 veth2-1: 
+	ether b2:71:88:ea:5c:00
+	inet: 10.100.1.2
+	netmask: 255.255.255.0
+1 packet captured
+2 packets received by filter
+0 packets dropped by kernel
+New conection 4.
+Send ABC to client.
+Read ABC from server.
+Close client.
+Close server.
++ tcpdump -XX -r ../../checkpoints/CP7/capture.pcap
+reading from file ../../checkpoints/CP7/capture.pcap, link-type EN10MB (Ethernet), snapshot length 262144
+18:27:45.359674 IP 10.100.1.1.1025 > 10.100.1.2.webmin: Flags [S], seq 1804289383, win 65528, length 0
+	0x0000:  b271 88ea 5c00 6682 0f5a 9dad 0800 4500  .q..\.f..Z....E.
+	0x0010:  0028 0000 4000 1006 ee6b 0a64 0101 0a64  .(..@....k.d...d
+	0x0020:  0102 0401 2710 6b8b 4567 0000 0000 5002  ....'.k.Eg....P.
+	0x0030:  fff8 5088 0000 0000 0000                 ..P.......
++ sudo ./delNS ns1
++ sudo ./delNS ns2
++ exit
+
+Script done on 2023-11-16 18:28:02+08:00 [COMMAND_EXIT_CODE="0"]

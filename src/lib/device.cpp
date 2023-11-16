@@ -26,6 +26,8 @@
 #define DEVICE_TIME_OUT 1000
 #define MAX_SNAPLEN (1 << 16)
 
+DeviceManager *dev_manager = new DeviceManager();
+
 Device::Device(char *dev_name,
                u_char *mac,
                dev_id id,
@@ -38,6 +40,11 @@ Device::Device(char *dev_name,
     this->id_ = id;
     this->manager_ = manager;
     memset(this->ebuf_, 0, PCAP_ERRBUF_SIZE);
+
+    this->port_mutex.lock();
+    memset(this->port_alloc,0,TCP_MAX_PORT+1);
+    this->port_mutex.unlock();
+
 
     /* Get the correspond IP of the device. */
     struct ifaddrs *ifa_list = NULL;
@@ -268,10 +275,19 @@ DeviceManager::DeviceManager()
                    " pcap_init error: %s\n",
                    ebuf);
     }
+    this->is_set_up = false;
     this->update_timer = RIP_UPDATE_TIME;
     this->route_thread = nullptr;
     this->IPcallback = nullptr;
     this->route_table.manager = (void *)this;
+
+    this->sockfds_alloc_mutex.lock();
+    memset(this->sockfd_alloc,0,TCP_MAX_SOCK_FD+1);
+    this->sockfd_alloc[STDIN_FILENO]=true;
+    this->sockfd_alloc[STDOUT_FILENO]=true;
+    this->sockfd_alloc[STDERR_FILENO]=true;
+    this->sockfds_alloc_mutex.unlock();
+
 }
 DeviceManager::~DeviceManager()
 {
@@ -837,5 +853,154 @@ void deviceRecvFrame(Device *dev)
     {
         dbg_printf("[ERROR][deviceRecvFrame()] pcap_loop error.\n");
         return;
+    }
+}
+
+void DeviceManager::setUpHost()
+{
+    if(this->is_set_up==false)
+    {
+    struct ifaddrs *ifa_list = NULL;
+    getifaddrs(&ifa_list);
+    struct ifaddrs *ifa_entry = ifa_list;
+    ip_addr_t device_ip;
+    ip_addr_t subnet_mask;
+    bool found = false;
+    while (ifa_entry != NULL)
+    {
+        if (ifa_entry->ifa_addr->sa_family == AF_INET)
+        {
+            this->addDevice(ifa_entry->ifa_name);
+        }
+        ifa_entry = ifa_entry->ifa_next;
+    }
+    freeifaddrs(ifa_list);
+    this->is_set_up=true;
+    sleep(10);
+    }
+}
+
+dev_id addDevice(const char *dev_name)
+{
+    return dev_manager->addDevice(dev_name);
+}
+Device *findDevice(const char *dev_name)
+{
+    return dev_manager->findDevice(dev_name);
+}
+
+Device *getDevice(dev_id id)
+{
+    return dev_manager->getDevice(id);
+}
+Device *getDeviceByIP(ip_addr_t ip)
+{
+    return dev_manager->getDeviceByIP(ip);
+}
+Device *getDeviceByIPPrefix(ip_addr_t ip)
+{
+    return dev_manager->getDeviceByIPPrefix(ip);
+}
+
+void printAllValidDevice()
+{
+    dev_manager->printAllValidDevice();
+}
+void printAllAddedDevice()
+{
+    dev_manager->printAllAddedDevice();
+}
+void printARPCache()
+{
+    dev_manager->printARPCache();
+}
+void printRouteTable(int verbose)
+{
+    dev_manager->printRouteTable(verbose);
+}
+
+std::string arpQueryMac(ip_addr_t ip)
+{
+    return dev_manager->arpQueryMac(ip);
+}
+int arpInsert(ip_addr_t ip, std::string mac)
+{
+    return dev_manager->arpInsert(ip,mac);
+}
+int arpDelete(ip_addr_t ip, ip_addr_t netmask)
+{
+    return dev_manager->arpDelete(ip,netmask);
+}
+
+int sendIPPacket(ip_addr_t src, ip_addr_t dest, int proto, void *buf, int len)
+{
+    return  dev_manager->sendIPPacket(src,dest,proto,buf,len);
+}
+int setIPPacketReceiveCallback(IPPacketReceiveCallback callback)
+{
+    return dev_manager->setIPPacketReceiveCallback(callback);
+}
+
+TCB *findSocket(fd_t sockfd)
+{
+    return dev_manager->findSocket(sockfd);
+}
+TCB *findSocket(sockaddr_in *local_addr, sockaddr_in *remote_addr)
+{
+    return dev_manager->findSocket(local_addr,remote_addr);
+}
+
+bool freeSocket(TCB *sock)
+{
+    return dev_manager->freeSocket(sock);
+}
+bool addLisenedSocket(fd_t listen_fd, TCB *sock)
+{
+    return dev_manager->addLisenedSocket(listen_fd,sock);
+}
+
+fd_t allocSocketfd()
+{
+    return dev_manager->allocSocketfd();
+}
+void setUpHost()
+{
+    dev_manager->setUpHost();
+}
+
+void addSocket(fd_t sockfd, TCB *sock)
+{
+    dev_manager->sockets_mutex.lock();
+    dev_manager->sockets[sockfd] = sock;
+    dev_manager->sockets_mutex.unlock();
+}
+void addListener(ListenerSocket *l_sock)
+{
+    dev_manager->listners_mutex.lock();
+    dev_manager->listeners[l_sock->sockfd] = l_sock;
+    dev_manager->listners_mutex.unlock();
+}
+ListenerSocket *getListener(fd_t sockfd)
+{
+    ListenerSocket *l_sock;
+
+    dev_manager->listners_mutex.lock_shared();
+    l_sock = dev_manager->listeners[sockfd];
+    dev_manager->listners_mutex.unlock_shared();
+
+    return l_sock;
+}
+
+void activateDeviceManager()
+{
+    if (dev_manager == nullptr)
+        dev_manager = new DeviceManager();
+}
+void deactivateHost()
+{
+    if (dev_manager != nullptr)
+    {
+        delete dev_manager;
+        dev_manager = nullptr;
     }
 }

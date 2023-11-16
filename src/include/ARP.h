@@ -1,4 +1,6 @@
 #ifndef NETSTACK_ARP_H
+#define NETSTACK_ARP_H
+
 
 #include <netinet/ip.h>
 #include <net/if_arp.h>
@@ -27,5 +29,4 @@ int sendARPReply(Device *dev, ip_addr_t ip);
 int handleARPRequest(Device *dev, ARP_CONTENT *pkt);
 int handleARPReply(Device *dev, ARP_CONTENT *pkt);
 
-#define NETSTACK_ARP_H
 #endif

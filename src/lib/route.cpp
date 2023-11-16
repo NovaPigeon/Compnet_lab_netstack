@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <vector>
+
 ip_addr_t RouteTable::query_next_hop(ip_addr_t dest_ip)
 {
     char ip_str[IP_STR_LEN];
@@ -125,7 +126,7 @@ void *RouteTable::construct_RIP_request(void *buf, size_t *len, ip_addr_t ip, ip
     entry->metric = 0;
     entry->must_be_zero_1 = 0;
     entry->next_hop_ip.s_addr = 0;
-    memcpy(buf + RIP_HDR_SIZE, entry, RIP_ENTRY_SIZE);
+    memcpy((u_char *)buf + RIP_HDR_SIZE, entry, RIP_ENTRY_SIZE);
     free(entry);
     return buf;
 }
@@ -267,7 +268,7 @@ void RouteTable::route_table_update()
                 char ip_next_hop[IP_STR_LEN];
                 ip_addr_to_str(key.dest_ip_prefix, ip_dst);
                 ip_addr_to_str(item.next_hop, ip_next_hop);
-                printf("[INFO][RouteTable::route_table_update()] "
+                dbg_printf("[INFO][RouteTable::route_table_update()] "
                        "The route item with dst_ip %s and next_hop %s has been out of time. Delete it.\n",
                        ip_dst,
                        ip_next_hop);

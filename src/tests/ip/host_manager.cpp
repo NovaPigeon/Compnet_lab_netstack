@@ -13,8 +13,6 @@
 #include <string>
 #include <ifaddrs.h>
 
-DeviceManager *deviceManager = new DeviceManager();
-
 // 解析命令行参数并执行命令
 void executeCommands(const std::string &filename = "")
 {
@@ -61,17 +59,12 @@ void executeCommands(const std::string &filename = "")
         if (command == "activateDeviceManager")
         {
             printf("Activate the device manager.\n");
-            if (deviceManager == nullptr)
-                deviceManager = new DeviceManager();
+            activateDeviceManager();
         }
-        else if (command == "deactivateHost")
+        else if(command == "deactivateHost")
         {
             printf("Deactivate the Host.\n");
-            if (deviceManager != nullptr)
-            {
-                delete deviceManager;
-                deviceManager = nullptr;
-            }
+            deactivateHost();
         }
         else if (command == "addDevice")
         {
@@ -80,10 +73,9 @@ void executeCommands(const std::string &filename = "")
                 std::cerr << "[ERROR][test_device_manager]: addDevice command requires 1 argument (device name)" << std::endl;
                 continue;
             }
-            if (deviceManager == nullptr)
-                deviceManager = new DeviceManager();
+            activateDeviceManager();
             const char *deviceName = tokens[1].c_str();
-            int ret = deviceManager->addDevice(deviceName);
+            int ret = addDevice(deviceName);
             if (ret == -1)
                 std::cerr << "[ERROR][test_device_manager]: addDevice faied" << std::endl;
             else
@@ -97,7 +89,7 @@ void executeCommands(const std::string &filename = "")
                 continue;
             }
             const char *deviceName = tokens[1].c_str();
-            Device *device = deviceManager->findDevice(deviceName);
+            Device *device = findDevice(deviceName);
             if (device)
             {
                 std::cout << "Found device with name: " << deviceName << ";ID :" << device->getDeviceID() << std::endl;
@@ -109,28 +101,28 @@ void executeCommands(const std::string &filename = "")
         }
         else if (command == "findAllAddedDevice")
         {
-            deviceManager->printAllAddedDevice();
+            printAllAddedDevice();
         }
         else if (command == "findAllValidDevice")
         {
-            deviceManager->printAllValidDevice();
+            printAllValidDevice();
         }
         else if (command == "setRecv")
         {
-            deviceManager->setIPPacketReceiveCallback(IP_recv_callback::recvIPCallback);
+            setIPPacketReceiveCallback(IP_recv_callback::recvIPCallback);
         }
-        else if (command == "printARPCache")
+        else if(command=="printARPCache")
         {
-            deviceManager->printARPCache();
+            printARPCache();
         }
-        else if (command == "printRouteTable")
+        else if(command=="printRouteTable")
         {
-            deviceManager->printRouteTable(STDOUT_FILENO);
+            printRouteTable(STDOUT_FILENO);
         }
-        else if (command == "sleep")
+        else if(command=="sleep")
         {
-            int time = atoi(tokens[1].c_str());
-            printf("Sleep %d seconds.\n", time);
+            int time=atoi(tokens[1].c_str());
+            printf("Sleep %d seconds.\n",time);
             sleep(time);
         }
         else if (command == "sendFrame")
@@ -142,13 +134,13 @@ void executeCommands(const std::string &filename = "")
             }
             const char *srcDevName = tokens[1].c_str();
             const char *dstDevName = tokens[2].c_str();
-            Device *srcDev = deviceManager->findDevice(srcDevName);
+            Device *srcDev = findDevice(srcDevName);
             if (srcDev == nullptr)
             {
                 std::cerr << "[ERROR][test_device_manager]: sendFrame argument srcDev is invalid." << std::endl;
                 continue;
             }
-            Device *dstDev = deviceManager->findDevice(dstDevName);
+            Device *dstDev = findDevice(dstDevName);
             if (dstDev == nullptr)
             {
                 std::cerr << "[ERROR][test_device_manager]: sendFrame argument dstDev is invalid." << std::endl;
@@ -187,58 +179,39 @@ void executeCommands(const std::string &filename = "")
         }
         else if (command == "exit")
         {
-            if (deviceManager != nullptr)
-            {
-                delete deviceManager;
-                deviceManager = nullptr;
-            }
+            exit(0);
             return;
         }
-        else if (command == "setUpHost")
+        else if(command=="setUpHost")
         {
             printf("Set up the Host.\n");
-            if (deviceManager == nullptr)
-                deviceManager = new DeviceManager();
-            struct ifaddrs *ifa_list = NULL;
-            getifaddrs(&ifa_list);
-            struct ifaddrs *ifa_entry = ifa_list;
-            ip_addr_t device_ip;
-            ip_addr_t subnet_mask;
-            bool found = false;
-            while (ifa_entry != NULL)
-            {
-                if (ifa_entry->ifa_addr->sa_family == AF_INET)
-                {
-                    deviceManager->addDevice(ifa_entry->ifa_name);
-                    printf("Add Device %s.\n", ifa_entry->ifa_name);
-                }
-                ifa_entry = ifa_entry->ifa_next;
-            }
-            freeifaddrs(ifa_list);
-            deviceManager->setIPPacketReceiveCallback(IP_recv_callback::recvIPCallback);
-            printf("Set IP receive callback.\n");
-            deviceManager->printAllAddedDevice();
-            deviceManager->printARPCache();
-            deviceManager->printRouteTable(STDOUT_FILENO);
-        }
-        else if (command == "sendIPPacket")
-        {
-            std::string ip_src_str = tokens[1];
-            std::string ip_dst_str = tokens[2];
-            ip_addr_t ip_src;
-            inet_aton(ip_src_str.c_str(), &ip_src);
-            ip_addr_t ip_dst;
-            inet_aton(ip_dst_str.c_str(), &ip_dst);
+            activateDeviceManager();
+            setUpHost();
 
-            u_char *pay_load = (u_char *)malloc(ETH_DATA_LEN);
-            memset(pay_load, 0, ETH_DATA_LEN);
+            setIPPacketReceiveCallback(IP_recv_callback::recvIPCallback);
+            printf("Set IP receive callback.\n");
+            printAllAddedDevice();
+            printARPCache();
+            printRouteTable(STDOUT_FILENO);
+        }
+        else if(command=="sendIPPacket")
+        {
+            std::string ip_src_str=tokens[1];
+            std::string ip_dst_str=tokens[2];
+            ip_addr_t ip_src;
+            inet_aton(ip_src_str.c_str(),&ip_src);
+            ip_addr_t ip_dst;
+            inet_aton(ip_dst_str.c_str(),&ip_dst);
+        
+            u_char *pay_load=(u_char *)malloc(ETH_DATA_LEN);
+            memset(pay_load,0,ETH_DATA_LEN);
             int pay_load_len = snprintf((char *)pay_load, ETH_DATA_LEN,
-                                        "Hello! This is an IP packet from %s to %s.",
-                                        ip_src_str.c_str(),
-                                        ip_dst_str.c_str());
-            printf("Host send an IP packet from %s to %s.\n", ip_src_str.c_str(),
-                   ip_dst_str.c_str());
-            deviceManager->sendIPPacket(ip_src, ip_dst, 0xfd, pay_load, pay_load_len);
+                                    "Hello! This is an IP packet from %s to %s.",
+                                    ip_src_str.c_str(),
+                                    ip_dst_str.c_str());
+            printf("Host send an IP packet from %s to %s.\n",ip_src_str.c_str(),
+                                    ip_dst_str.c_str());
+            sendIPPacket(ip_src,ip_dst,0xfd,pay_load,pay_load_len);
             free(pay_load);
         }
         else
@@ -247,8 +220,7 @@ void executeCommands(const std::string &filename = "")
         }
         std::cout << "> " << std::endl;
     }
-    if (deviceManager != nullptr)
-        delete deviceManager;
+    deactivateHost();
     if (fileStream.is_open())
     {
         fileStream.close();
@@ -257,7 +229,7 @@ void executeCommands(const std::string &filename = "")
 
 int main(int argc, char *argv[])
 {
-
+    
     // 检查是否提供了命令文件名作为命令行参数
     if (argc > 1)
     {

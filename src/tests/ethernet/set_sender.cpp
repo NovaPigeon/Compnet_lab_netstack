@@ -11,7 +11,6 @@
 #define MY_ETH_TYPE 0x8888
 
 int cnt=0;
-DeviceManager m;
 Device *dev;
 int MySendFrame(Device *dev,int i,void *dst_mac_,int wait_time,u_int16_t ethtype)
 {
@@ -80,7 +79,7 @@ int main(int argc,char **argv)
         return -1;
     }
     int send_num = atoi(argv[3]);
-    dev_id id = m.addDevice(dev_name);
+    dev_id id = addDevice(dev_name);
     if (id == -1)
     {
         printf("[ERROR] %s: The device is invalid", argv[0]);
@@ -88,7 +87,7 @@ int main(int argc,char **argv)
     }
 
     std::this_thread::sleep_for(std::chrono::milliseconds(SEND_WAIT_TIME*10));
-    dev = m.getDevice(id);
+    dev = getDevice(id);
     for(int i=0;i<send_num;++i)
     {
         cnt++;

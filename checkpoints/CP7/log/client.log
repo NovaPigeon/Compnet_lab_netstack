@@ -1,0 +1,405 @@
+[INFO][socket()] Allocate socket 3.
+[INFO][connect()]:
+[INFO][connect()] The socket 3: (10.100.1.1:1025, 10.100.1.2:10000).
+[INFO][connect()] Socket 3 Send <SEQ=ISS(1804289383)><CTL=SYN>
+[INFO][TCB::change_state] State of socket change from CLOSED to SYN_SENT.
+[INFO][connect()] Resend SYN 1: Socket 3 send<SEQ=ISS(1804289383)><CTL=SYN>
+[INFO][connect()] Resend SYN 2: Socket 3 send<SEQ=ISS(1804289383)><CTL=SYN>
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289383
+	Acknowledgment Number: 1804289384
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 1
+	FIN: 0
+	Window: 65528
+	Checksum: 36756
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state SYN_SENT.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289383
+	SND.NXT: 1804289384
+	SND.WND: 65528
+	RCV.NXT: 0
+	RCV.WND: 524280
+[INFO][TCB::ackRetransQueue()] Socket 3; ACK 1804289384.
+[INFO][TCB::change_state] State of socket change from SYN_SENT to ESTAB.
+[INFO][handleTCPPacket()] Socket 3 send ACK: <SEQ=SND.NXT(1804289384)><ACK=RCV.NXT(1804289384)><CTL=ACK>
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289383
+	Acknowledgment Number: 1804289384
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 1
+	FIN: 0
+	Window: 65528
+	Checksum: 36756
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state ESTAB.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289384
+	SND.WND: 65528
+	RCV.NXT: 1804289384
+	RCV.WND: 524280
+[INFO][connect()] Connect successfully.
+[INFO][read()]:
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289383
+	Acknowledgment Number: 1804289384
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 1
+	FIN: 0
+	Window: 65528
+	Checksum: 36756
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state ESTAB.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289384
+	SND.WND: 65528
+	RCV.NXT: 1804289384
+	RCV.WND: 524280
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 23
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289384
+	Acknowledgment Number: 1804289384
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 0
+	Window: 65528
+	Checksum: 37264
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state ESTAB.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289384
+	SND.WND: 65528
+	RCV.NXT: 1804289384
+	RCV.WND: 524280
+[INFO][TCB::ackRetransQueue()] Socket 3; ACK 1804289384.
+[INFO][handleTCPPacket()] Receive data(3). Deliver it to read buffer(3) and send ACK: <SEQ=SND.NXT(1804289384)><ACK=RCV.NXT(1804289387)><CTL=ACK>
+[INFO][read()] Socket 3 read 3 bytes, data[0]=65.
+[INFO][close()]:
+[INFO][TCB::change_state] State of socket change from ESTAB to FINWAIT_1.
+[INFO][close()] Socket 3 send FIN/ACK: <SEG=SND.NXT(1804289384)><ACK=RCV.NXT(1804289387)><CTL=FIN,ACK>.
+[INFO][close()] Socket 3 resend FIN/ACK: <SEG=SND.NXT(1804289385)><ACK=RCV.NXT(1804289387)><CTL=FIN,ACK>.
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289387
+	Acknowledgment Number: 1804289385
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 0
+	Window: 65528
+	Checksum: 37263
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state FINWAIT_1.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289385
+	SND.WND: 65528
+	RCV.NXT: 1804289387
+	RCV.WND: 524280
+[INFO][TCB::ackRetransQueue()] Socket 3; ACK 1804289385.
+[INFO][handleTCPPacket()] The FIN of socket 3 has been ACKed.
+[INFO][TCB::change_state] State of socket change from FINWAIT_1 to FINWAIT_2.
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289387
+	Acknowledgment Number: 1804289385
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 0
+	Window: 65528
+	Checksum: 37263
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state FINWAIT_2.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289385
+	SND.WND: 65528
+	RCV.NXT: 1804289387
+	RCV.WND: 524280
+[INFO][TCB::ackRetransQueue()] Socket 3; ACK 1804289385.
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289387
+	Acknowledgment Number: 1804289385
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 1
+	Window: 65528
+	Checksum: 37007
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state FINWAIT_2.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289385
+	SND.WND: 65528
+	RCV.NXT: 1804289387
+	RCV.WND: 524280
+[INFO][TCB::ackRetransQueue()] Socket 3; ACK 1804289385.
+[INFO][handleTCPPacket()] Receive FIN and send ACK of the FIN: <SEQ=SND.NXT(1804289385)><ACK=SEG.SEQ+1(1804289388)><CTL=ACK>.
+[INFO][TCB::change_state] State of socket change from FINWAIT_2 to TIME_WAIT.
+[INFO][TCB::clearRetainsQueue()]
+[INFO][TCB::change_state] State of socket change from TIME_WAIT to TIME_WAIT.
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289387
+	Acknowledgment Number: 1804289385
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 1
+	Window: 65528
+	Checksum: 37007
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state TIME_WAIT.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289385
+	SND.WND: 65528
+	RCV.NXT: 1804289388
+	RCV.WND: 524280
+[INFO][handleTCPPacket()] The segment could not be received. Socket 3 send <SEQ=SND.NXT(1804289385)><ACK=RCV.NXT(1804289388)><CTL=ACK>
+[INFO][close()] Socket 3 resend FIN/ACK: <SEG=SND.NXT(1804289385)><ACK=RCV.NXT(1804289388)><CTL=FIN,ACK>.
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289387
+	Acknowledgment Number: 1804289385
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 1
+	Window: 65528
+	Checksum: 37007
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state TIME_WAIT.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289385
+	SND.WND: 65528
+	RCV.NXT: 1804289388
+	RCV.WND: 524280
+[INFO][handleTCPPacket()] The segment could not be received. Socket 3 send <SEQ=SND.NXT(1804289385)><ACK=RCV.NXT(1804289388)><CTL=ACK>
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289388
+	Acknowledgment Number: 1804289385
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 0
+	Window: 65528
+	Checksum: 37262
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state TIME_WAIT.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289385
+	SND.WND: 65528
+	RCV.NXT: 1804289388
+	RCV.WND: 524280
+[INFO][TCB::ackRetransQueue()] Socket 3; ACK 1804289385.
+[ERROR][handleTCPPacket()] This should not occur, since a FIN has been received from the remote side. Ignore the segment text.
+[INFO][close()] Socket 3 resend FIN/ACK: <SEG=SND.NXT(1804289385)><ACK=RCV.NXT(1804289388)><CTL=FIN,ACK>.
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289387
+	Acknowledgment Number: 1804289385
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 1
+	Window: 65528
+	Checksum: 37007
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state TIME_WAIT.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289385
+	SND.WND: 65528
+	RCV.NXT: 1804289388
+	RCV.WND: 524280
+[INFO][handleTCPPacket()] The segment could not be received. Socket 3 send <SEQ=SND.NXT(1804289385)><ACK=RCV.NXT(1804289388)><CTL=ACK>
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289388
+	Acknowledgment Number: 1804289385
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 0
+	Window: 65528
+	Checksum: 37262
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state TIME_WAIT.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289385
+	SND.WND: 65528
+	RCV.NXT: 1804289388
+	RCV.WND: 524280
+[INFO][TCB::ackRetransQueue()] Socket 3; ACK 1804289385.
+[ERROR][handleTCPPacket()] This should not occur, since a FIN has been received from the remote side. Ignore the segment text.
+[INFO] Close socket 3 successfully.
+[INFO][TCB::change_state] State of socket change from TIME_WAIT to CLOSED.
+[INFO][close()] Socket 3 close successfully.
+[INFO][handleTCPPacket()]
+[INFO][TCPPacket::printTCPPacket()]
+Pesudo Head: 
+	Source Address: 10.100.1.2
+	Destination Address: 10.100.1.1
+	PTCL: 0x6
+	TCP Length: 20
+TCP Head: 
+	Source Port: 10000
+	Destination Port: 1025
+	Sequence Number: 1804289387
+	Acknowledgment Number: 1804289385
+	URG: 0
+	ACK: 1
+	PSH: 0
+	RST: 0
+	SYN: 0
+	FIN: 1
+	Window: 65528
+	Checksum: 37007
+	Urgent Pointer: 0
+[INFO][handleTCPPacket()] The socket 3 is in state CLOSED.
+[INFO][handleTCPPacket()]TCB:
+	SND.UNA: 1804289384
+	SND.NXT: 1804289385
+	SND.WND: 65528
+	RCV.NXT: 1804289388
+	RCV.WND: 524280
+[ERROR][handleTCPPacket()] The socket 3 CLOSED, send RST: <SEQ=SEG.ACK(1804289385)><CTL=RST>.

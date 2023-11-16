@@ -9,7 +9,7 @@
 
 
 // 解析命令行参数并执行命令
-void executeCommands(DeviceManager &deviceManager, const std::string &filename = "")
+void executeCommands(const std::string &filename = "")
 {
     std::istream *input;
     std::ifstream fileStream;
@@ -59,7 +59,7 @@ void executeCommands(DeviceManager &deviceManager, const std::string &filename =
                 continue;
             }
             const char *deviceName = tokens[1].c_str();
-            int ret=deviceManager.addDevice(deviceName);
+            int ret=addDevice(deviceName);
             if(ret==-1)
                 std::cerr << "[ERROR][test_device_manager]: addDevice faied" << std::endl;
             else
@@ -73,7 +73,7 @@ void executeCommands(DeviceManager &deviceManager, const std::string &filename =
                 continue;
             }
             const char *deviceName = tokens[1].c_str();
-            Device *device = deviceManager.findDevice(deviceName);
+            Device *device = findDevice(deviceName);
             if (device)
             {
                 std::cout << "Found device with name: " << deviceName << ";ID :"<<device->getDeviceID()<<std::endl;
@@ -85,11 +85,11 @@ void executeCommands(DeviceManager &deviceManager, const std::string &filename =
         }
         else if (command == "findAllAddedDevice")
         {
-            deviceManager.printAllAddedDevice();
+            printAllAddedDevice();
         }
         else if(command=="findAllValidDevice")
         {
-            deviceManager.printAllValidDevice();
+            printAllValidDevice();
         }
         else if(command=="setRecv")
         {
@@ -99,7 +99,7 @@ void executeCommands(DeviceManager &deviceManager, const std::string &filename =
                 continue;
             }
             const char *deviceName = tokens[1].c_str();
-            Device *dev=deviceManager.findDevice(deviceName);
+            Device *dev=findDevice(deviceName);
             dev->setFrameReceiveCallback(ether_recv_callback::recvFrameCallback);
             const u_char *mac=dev->getDeviceMac();
             printf("Device %s with mac %02x:%02x:%02x:%02x:%02x:%02x and ID %d "
@@ -121,7 +121,7 @@ void executeCommands(DeviceManager &deviceManager, const std::string &filename =
                 continue;
             }
             const char *deviceName = tokens[1].c_str();
-            Device *dev = deviceManager.findDevice(deviceName);
+            Device *dev = findDevice(deviceName);
             dev->stopRecv();
             const u_char *mac = dev->getDeviceMac();
             printf("Device %s with mac %02x:%02x:%02x:%02x:%02x:%02x and ID %d "
@@ -144,13 +144,13 @@ void executeCommands(DeviceManager &deviceManager, const std::string &filename =
             }
             const char *srcDevName = tokens[1].c_str();
             const char *dstDevName=tokens[2].c_str();
-            Device *srcDev = deviceManager.findDevice(srcDevName);
+            Device *srcDev = findDevice(srcDevName);
             if(srcDev==nullptr)
             {
                 std::cerr << "[ERROR][test_device_manager]: sendFrame argument srcDev is invalid." << std::endl;
                 continue;
             }
-            Device *dstDev = deviceManager.findDevice(dstDevName);
+            Device *dstDev = findDevice(dstDevName);
             if (dstDev == nullptr)
             {
                 std::cerr << "[ERROR][test_device_manager]: sendFrame argument dstDev is invalid." << std::endl;
@@ -205,18 +205,17 @@ void executeCommands(DeviceManager &deviceManager, const std::string &filename =
 
 int main(int argc, char *argv[])
 {
-    DeviceManager deviceManager;
 
     // 检查是否提供了命令文件名作为命令行参数
     if (argc > 1)
     {
         const std::string filename = argv[1];
-        executeCommands(deviceManager, filename);
+        executeCommands(filename);
     }
     else
     {
         // 否则，从标准输入读取命令
-        executeCommands(deviceManager);
+        executeCommands();
     }
 
     return 0;
